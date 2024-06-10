@@ -1,0 +1,212 @@
+\usepackage{multicol,amsmath,amssymb,wasysym,mathtools,graphicx,tikz,geometry,hyperref,amsthm,makeidx,newtx,dsfont,sseq,pagecolor,xcolor,enumerate,pdflscape,spectralsequences,pdfpages}
+\usetikzlibrary{cd,automata,matrix,decorations.pathreplacing,decorations.markings}
+\usepackage[normalem]{ulem}
+\usepackage[breakable]{tcolorbox}
+
+
+\geometry{margin = 1in}
+
+\definecolor{wongorange}{RGB}{230,159,0}
+\definecolor{wonglightblue}{RGB}{86,180,233}
+\definecolor{wonggreen}{RGB}{0,158,115}
+\definecolor{wongyellow}{RGB}{240,228,66}
+\definecolor{wongdarkblue}{RGB}{0,114,178}
+\definecolor{wongred}{RGB}{213,94,0}
+\definecolor{wongpink}{RGB}{204,121,167}
+\definecolor{scottygreenyellow}{RGB}{169,255,23}
+\definecolor{vantablack}{RGB}{26,26,26}
+
+
+% \pagecolor{black}
+\pagecolor{vantablack} %Nice gray black
+\color{white}
+
+
+\hypersetup{
+    colorlinks=true,
+    linkbordercolor={vantablack},
+    linkcolor={wonggreen},
+    urlcolor = {wonglightblue},
+    citecolor = {wongorange}}
+
+\usepackage[textwidth=2cm,textsize=tiny,colorinlistoftodos]{todonotes}
+%% S.T. notes
+\newcommand{\stnote}[1]{\todo[color=cyan!20!black,linecolor=cyan!20!black,size=\tiny,textcolor = white]{#1}}
+\newcommand{\stnoteil}[1]{\ \todo[inline,color=cyan!20!black,linecolor=cyan!20!black,textcolor = white,size=\normalsize]{{#1}}}
+
+
+
+\newcommand{\by}{\times}
+\newcommand{\oby}{\otimes}
+\newcommand{\sets}[1]{\left\{ #1 \right\}}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\aabs}[1]{\left\| #1 \right\|}
+\newcommand{\parenths}[1]{\left( #1 \right)}
+\newcommand{\pparenths}[1]{\left(\!\left( #1 \right)\!\right)}
+\newcommand{\bracks}[1]{\left\lbrack #1 \right\rbrack}
+\newcommand{\bbracks}[1]{\left\lbrack\!\left\lbrack #1 \right\rbrack\!\right\rbrack}
+\newcommand{\angles}[1]{\left\langle #1 \right\rangle}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\ul}[1]{\underline{#1}}
+\renewcommand{\emptyset}{\varnothing} 
+\newcommand{\inv}{^{-1}}
+\newcommand{\oldphi}{\phi}
+\renewcommand{\phi}{\varphi}
+\newcommand{\gray}[1]{\textcolor{black!60}{ #1 }}
+\newcommand{\red}[1]{\textcolor{red!60!orange}{ #1 }}
+\newcommand{\xr}[1]{\xrightarrow{#1}}
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\upto}{\uparrow}
+\newcommand{\downto}{\downarrow}
+\newcommand{\from}{\leftarrow}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\dee}{\partial}
+\renewcommand{\tilde}[1]{\widetilde{#1}}
+\renewcommand{\hat}[1]{\widehat{#1}}
+\newcommand{\bigmid}{~\big|~}
+\newcommand{\biggmid}{~\bigg|~}
+\newcommand{\Biggmid}{~\Bigg|~}
+\newcommand{\acts}{\curvearrowright}
+\newcommand{\spa}{\mathsf{span}}
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\nond}{\noindent}
+\newcommand{\Fr}{\mathsf{Fr}}
+\newcommand{\mCP}{\mathbb{CP}}
+\newcommand{\mRP}{\mathbb{RP}}
+\newcommand{\mHP}{\mathbb{HP}}
+\newcommand{\SO}{\mathsf{SO}}
+\newcommand{\Spin}{\mathsf{Spin}}
+\newcommand{\GL}{\mathsf{GL}}
+\newcommand{\lO}{\mathsf{O}}
+\newcommand{\Pin}{\mathsf{Pin}}
+\newcommand{\mCl}{\mathbb{C}\text{l}}
+\newcommand{\Sq}{\text{Sq}}
+\newcommand{\cTop}{\mathsf{Top}}
+\newcommand{\uno}{\mathds{1}}
+\newcommand{\overoverset}[3]{\overset{#1}{\overset{#2}{#3}}}
+\newcommand{\underunderset}[3]{\underset{#1}{\underset{#2}{#3}}}
+\newcommand{\lspinc}{\text{spin}^c}
+\newcommand{\ndee}{{\eth}}
+\renewcommand{\Im}{\text{Im }}
+\renewcommand{\Re}{\text{Re }}
+\newcommand{\Diff}{\text{Diff}}
+\newcommand{\K}{\text{K}}
+\newcommand{\mtR}{\widetilde{\mR}}
+\newcommand{\mtC}{\widetilde{\mathbb{C}}}
+\newcommand{\sedots}{\rotatebox{-45}{$\vdots$}}
+\newcommand{\stwomatrixsmall}{\begin{psmallmatrix}0&1\\1&0\end{psmallmatrix}}
+\newcommand{\stwomatrix}{\begin{pmatrix}0&1\\1&0\end{pmatrix}}
+
+\newcommand{\ortho}{\mathsf{O}}
+\newcommand{\unitary}{\mathsf{U}}
+\newcommand{\sortho}{\mathsf{SO}}
+\newcommand{\sunitary}{\mathsf{SU}}
+
+\DeclareMathOperator{\proj}{\text{proj}}
+\DeclareMathOperator{\coker}{\text{coker}}
+\DeclareMathOperator{\Ch}{\text{Ch}}
+\DeclareMathOperator{\supp}{\text{supp}}
+\DeclareMathOperator{\colim}{\text{colim}}
+\DeclareMathOperator{\Pic}{\text{Pic}}
+\DeclareMathOperator{\Th}{\text{Th}}
+\DeclareMathOperator{\ind}{\text{ind}}
+\DeclareMathOperator{\Aut}{\text{Aut}}
+\DeclareMathOperator{\End}{\text{End}}
+\DeclareMathOperator{\Hom}{\text{Hom}}
+\DeclareMathOperator{\FBF}{\text{FBF}}
+\DeclareMathOperator{\BF}{\text{BF}}
+\DeclareMathOperator{\SW}{\text{SW}}
+\DeclareMathOperator{\calSW}{\mathcal{SW}}
+\DeclareMathOperator{\tSW}{\widetilde{\text{SW}}}
+\DeclareMathOperator{\tcalSW}{\widetilde{\mathcal{SW}}}
+\DeclareMathOperator{\bSW}{\mathbb{SW}}
+\DeclareMathOperator{\tbSW}{\widetilde{\mathbb{SW}}}
+
+\newcommand{\lineyspace}{
+  \bigskip
+  \hrule
+  \bigskip
+}
+\newcommand{\dirac}{\partial\!\!\!/}
+% \setcounter{secnumdepth}{0}
+
+
+
+
+\makeatletter
+\newcommand*{\relrelbarsep}{.386ex}
+\newcommand*{\relrelbar}{%
+  \mathrel{%
+    \mathpalette\@relrelbar\relrelbarsep
+  }%
+}
+\newcommand*{\@relrelbar}[2]{%
+  \raise#2\hbox to 0pt{$\m@th#1\relbar$\hss}%
+  \lower#2\hbox{$\m@th#1\relbar$}%
+}
+\providecommand*{\rightrightarrowsfill@}{%
+  \arrowfill@\relrelbar\relrelbar\rightrightarrows
+}
+\providecommand*{\leftleftarrowsfill@}{%
+  \arrowfill@\leftleftarrows\relrelbar\relrelbar
+}
+\providecommand*{\xrightrightarrows}[2][]{%
+  \ext@arrow 0359\rightrightarrowsfill@{#1}{#2}%
+}
+\providecommand*{\xleftleftarrows}[2][]{%
+  \ext@arrow 3095\leftleftarrowsfill@{#1}{#2}%
+}
+\makeatother
+
+\makeatletter
+\@tfor\next:=ABCDEFGHIJKLMNOPQRSTUVWXYZ\do{%
+  \def\command@factory#1{%
+    \expandafter\def\csname cal#1\endcsname{\mathcal{#1}}
+  }
+ \expandafter\command@factory\next
+}
+\makeatletter
+\@tfor\next:=ABCDEFGHIJKLMNOPQRSTUVWXYZ\do{%
+  \def\command@factory#1{%
+    \expandafter\def\csname m#1\endcsname{\mathbb{#1}}
+  }
+ \expandafter\command@factory\next
+}
+\makeatletter
+\@tfor\next:=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\do{%
+  \def\command@factory#1{%
+    \expandafter\def\csname fr#1\endcsname{\mathfrak{#1}}
+  }
+ \expandafter\command@factory\next
+}
+
+
+
+
+\tcbuselibrary{theorems}
+\newtcbtheorem{theorem}{Theorem}{breakable,colback = black!80!green, colframe=green!35!black,fonttitle=\bfseries,coltext=white}{thm}
+\newtcbtheorem{corollary}{Corollary}{breakable,colback = black!82!green,colframe=green!30!black,fonttitle=\bfseries,coltext = white}{cor}
+\newtcbtheorem{lemma}{Lemma}{breakable,colback = black!85!green,colframe=green!25!black,fonttitle=\bfseries,coltext = white}{lem}
+\newtcbtheorem{proposition}{Proposition}{breakable,colback = green!30!black,colframe=green!20!black,fonttitle=\bfseries,coltext = white}{lem}
+\newtcbtheorem{definition}{Definition}{breakable,colback = black!80!blue,colframe=blue!35!black,fonttitle=\bfseries,coltext = white}{def}
+\newtcbtheorem{exercise}{Exercise}{breakable,colback = black!80!yellow,colframe=yellow!35!black,fonttitle=\bfseries,coltext=white}{exercise} 
+\newtcbtheorem{remark}{Remark}{breakable,colback = black!80!wongpink,colframe=wongpink!35!black,fonttitle=\bfseries,coltext=white}{exercise} 
+\newtcbtheorem{problem}{Problem}{breakable,colback = black!80!cyan,colframe=cyan!35!black,fonttitle=\bfseries,coltext=white}{problem} 
+\newtcbtheorem{example}{Example}{breakable,colback = black!80!wongpink,colframe=wongpink!35!black,fonttitle=\bfseries,coltext=white}{exmple}
+\newtcbtheorem{question}{Question}{breakable,colback = black!80!wongpink,colframe=wongpink!35!black,fonttitle=\bfseries,coltext=white}{qn}
+\newtcbtheorem{conjecture}{Conjecture}{breakable,colback = black!80!wongpink,colframe=wongpink!35!black,fonttitle=\bfseries,coltext=white}{conj}
+\newtcbtheorem{claim}{Claim}{breakable,colback = black!80!wongpink,colframe=wongpink!35!black,fonttitle=\bfseries,coltext=white}{claim}
+
+\newtcbox{\tcmathtex}{on line,colback=vantablack!40!wonglightblue,colframe=vantablack,size=fbox,arc=3pt,boxrule=0.8pt,coltext=  white}
+\newcommand{\tcmtblue}[1]{\tcmathtex{$#1$}}
+
+\newcommand{\alerttext}[1]{\textcolor{wongorange}{\textbf{#1}}}
+
+
+
+
+\pagestyle{empty}
+\setcounter{secnumdepth}{0}
+\makeindex
