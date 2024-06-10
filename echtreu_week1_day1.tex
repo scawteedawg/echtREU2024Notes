@@ -89,9 +89,24 @@ Let's define a few things.
         \item Excision: If $X = A\cup B$, then $E_\ast(A,A\cap B)\to E_\ast(X,B)$ is an isomorphism. 
         \item Additivity: Coproducts in Spaces induce coproducts in homology.
     \end{itemize}
+    For more details, see \href{https://en.wikipedia.org/wiki/Cohomology#Axioms_and_generalized_cohomology_theories}{Wikipedia on generalized cohomology}.
 \end{definition}
 
 \begin{theorem}{Brown's representability Theorem}{}
-    There is an isomorphism between generalized homology theories and spectra. Given a spectrum $\calE$, the homology is given by $$\calE_\ast(X) = \pi_ast(\calE\wedge X).$$
+    There is an isomorphism between generalized (co)homology theories and spectra.\index{Brown's representability Theorem} Given a spectrum $\calE$, the homology is given by $$\calE_\ast(X) = \pi_\ast(\calE\wedge X).$$ The cohomology associated to the spectrum $\calE$ is given by $$\calE^\ast(X) = [X,\calE].$$
 \end{theorem}
 
+\begin{definition}{Fiber Sequences}{}
+    We'll come back to this! The key is that in spectra land, it goes back and forth in both directions. 
+\end{definition}
+
+\begin{fact}{}{}
+    Any fiber sequence $X\to Y\onto Z$ gives rise to a long exact sequence in $\pi_\ast$, %$$\cdots \to \pi_{k+1}Z\to \pi_k X\to \pi_k Y\to \pi_k Z\to \pi_{k-1}X\to \cdots$$
+    \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        \&\cdots\ar[r]\& \pi_{k+1}Z\ar[dll,out = 225,in = 45]\\ 
+        \pi_k X\ar[r]\&\pi_k Y\ar[r]\&\pi_k Z\ar[dll,out = 225,in = 45]\\ 
+        \pi_{k-1}X\ar[r]\& \cdots
+      \end{tikzcd}
+    \end{center}
+\end{fact}
