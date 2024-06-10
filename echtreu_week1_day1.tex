@@ -1,5 +1,6 @@
 \section{Day 1}
 
+\subsection{Lecture 1: Lot's of definitions!}
 \begin{tcolorbox}[colback = black,coltext = white]{Plan}{}
 
     We are going to try and compute $$\pi_\ast(E^{hC_6}\wedge V(0)).$$
@@ -57,4 +58,40 @@ Let's define a few things.
     \end{center}
     which gives us a map $\pi_{n+m}(X\wedge X)$. If we have a map $X\wedge X \xr{\mu} X$, then we're good; this is an honest to goodness ring! An instance of this is $S^0$. Try it out! For us $V(0) = \text{Cofiber}(2)$ is not a ring. 
 \end{itemize}
+
+
+\lineyspace
+
+\subsection{Spectra}
+
+\begin{definition}{Spectrum}{}
+    A {spectrum}\index{spectrum}\footnote{What we describe here is sometimes referred to as a prespectrum. Some people require a spectrum to have the structure maps as homeomorphisms.} $X$ is a collection of pointed spaces $$\sets{X_0,X_1,X_2,\dots} = \sets{X_n}_{n\in \mN}$$ together with structure maps $$\Sigma X_n\to X_{n+1}.$$
+\end{definition}
+\begin{example}{}{}
+    \begin{enumerate}
+        \item The sphere spectrum $\mS = \sets{S^0,S^1,\dots}$ and homeomorphisms $\Sigma S^n\xr{\cong}S^{n+1}$. 
+        \item Suspension spectrum $\Sigma^\infty X = \sets{X,\Sigma X, \Sigma^2 X,\dots}$ \index{spectrum!suspension spectrum} with structure maps $$\Sigma (\Sigma^\infty X)_n = \Sigma \Sigma^n X\xr{\cong }\Sigma^{n+1}X = (\Sigma^\infty X)_{n+1}.$$
+        \item For some (non-suspension) spectra, we can describe the spaces, but for the majority of spectra, we cannot. 
+    \end{enumerate}
+\end{example}
+\begin{center}
+    \begin{tikzcd}[ampersand replacement = \&,column sep =2cm]
+      \mathsf{Top}_\ast\ar[r,shift left = 5pt,"\Sigma^\infty"]\ar[rr,bend left = 50,shift left = 5pt,"\Sigma^\infty"]\& \mathsf{PreSp}\ar[l,shift left = 5pt,"\Omega^\infty"] \ar[r,shift left = 5pt,"L"]\& \mathsf{Sp}\ar[l,shift left = 5pt, "U"]\ar[ll, bend left = 50,shift left = 5pt,"\Omega^\infty"]
+    \end{tikzcd}
+  \end{center}
+
+``Why were spectra invented?'' you may ask. The answer comes in the form of Brown's representability theorem. To understand this, we need a few definitions. 
+\begin{definition}{}{}
+    A generalized homology theory $E$\index{generalized homology} $E$ is a functor $$E:\mathsf{Spaces}\to \mathsf{GradedAbGrps}$$ with the properties 
+    \begin{itemize}
+        \item Homotopy: Homotopic spaces have the same homology.
+        \item Exactness: Exact sequence in homology from a cofiber sequence. 
+        \item Excision: If $X = A\cup B$, then $E_\ast(A,A\cap B)\to E_\ast(X,B)$ is an isomorphism. 
+        \item Additivity: Coproducts in Spaces induce coproducts in homology.
+    \end{itemize}
+\end{definition}
+
+\begin{theorem}{Brown's representability Theorem}{}
+    There is an isomorphism between generalized homology theories and spectra. Given a spectrum $\calE$, the homology is given by $$\calE_\ast(X) = \pi_ast(\calE\wedge X).$$
+\end{theorem}
 
