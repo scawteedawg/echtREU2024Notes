@@ -110,3 +110,73 @@ Let's define a few things.
       \end{tikzcd}
     \end{center}
 \end{fact}
+
+\newpage
+
+\subsection{Lecture 2: Algebra}
+
+\subsubsection{Rings}
+First, let's talk about commutative \emph{(order of multiplication doesn't matter)}, unital \emph{(the ring has the element 1)} rings.\index{ring} Every time I write $R$ as a ring, I mean this version of a ring. 
+\begin{example}{}{}
+    \begin{itemize}
+        \item $\mZ$
+        \item $\mZ/n$ for $n\geq 2$
+        \item $\mF_p:=\mZ/p$ with $p$ a prime. A special case of this is $\mF_2 = (\sets{0,1},+,\times)$. 
+        \item $\mZ[x]$, $\mF_2[x]$, $R[x]$, aka polynomial rings in one variable. 
+        \item $\frac{\mF_2[x]}{(x^3+1)}$, a ring mod out by an ideal. 
+        \item $\mZ[G]$ for $G$ an abelian group, the group ring. 
+        \item $\ds\mF_4:=\frac{\mF_2[x]}{(x^2+x+1)}$, \ul{the} field with 4($=2^2$) elements. 
+        \item $\mZ[[x]] = \sets{\sum_0^\infty a_k x^k\mid \forall k, a_k\in \mZ}$, the power series ring
+        \item $\mZ((x))$, the laurent series ring. 
+    \end{itemize}
+\end{example}
+\subsubsection{Modules}
+\begin{definition}{Module}
+    A {module} $M$ over a commutative ring $R$ is an abelian group $M$ together with a scaling map $$R\oby M\to M$$ $$r\oby m\mapsto r\cdot m.$$
+\end{definition}
+\begin{example}{}{}
+    A vector space $V$ over the ring $\mR$ (or any field $\mF$) is the same thing as an $\mR$-module. 
+\end{example}
+\begin{example}{}{}
+    If $R$ is a ring, then an ideal $I\subseteq R$ is the same thing as a submodule of $R$.
+\end{example}
+\subsubsection{Exact Sequences}
+\begin{definition}{Short Exact Sequence}{}
+    A short exact sequence is $$0\to M'\xr{f}M\xr{g}M''\to 0,$$ such that $$\ker(\text{each map}) = \Im(\text{previous map}).$$ For specificity, we need 
+    \begin{enumerate}[i.]
+        \item $f$ is injective
+        \item $g$ is surjectve
+        \item $\ker g = \Im f$. 
+    \end{enumerate}
+\end{definition}
+\begin{example}{}{}
+    Let $R$ be a field, say $\mF_2$, let $V$ be an $R$-vector space and let $W\leq V$ be a subspace. Then $$0\to W\to V\to V/W\to 0$$ is a short exact sequence. 
+\end{example}
+\begin{example}{}{}
+    Let $R =\mZ$. Consider the map $$0\to \mZ/2\xr{[1~0]}\mZ/2\oplus \mZ/2\xr{\begin{bsmallmatrix}
+        0 & 0\\ 0 & 1 
+    \end{bsmallmatrix}}\mZ/2\to 0.$$ What is the composition of these maps? Is this sequence exact?
+\end{example}
+\begin{example}{}{}
+    Let $R = \mZ$. Then consider the sequence $$0\to \mZ/2\xr{(-)\cdot 2}\mZ/4\xr{()\mod 2}\mZ/2\to 0.$$ Is this a short exact sequence? If so, how does it compare to the prior example?
+\end{example}
+\begin{remark}{}{}
+    $\mZ/2\oplus \mZ/2\neq \mZ/4$ as groups. Prove it!
+\end{remark}
+Oftentimes, we are interested in some module $M$, and we know that it fits into a short exact sequence $$0\to M'\to M\to M''\to 0$$ where $M',M''$ are known. Determining $M$ given $M'$ and $M''$ is called an extension problem.
+
+\begin{definition}{$p$-adics}{}
+    Another ring of interest is the $p$-adic integers $\mZ_p$ also denoted $\mZ_p^\wedge$ where $\wedge$ means completed. Another way to write this is \begin{align*}\mZ_p = \mZ_p^\wedge &= \varprojlim \mZ/p^k\\ &= \varprojlim(\cdots \to \mZ/p^3\to \mZ/p^2\to\mZ/p\to 0)\\ & = \sets{(a_1,a_2,\dots)\mid a_i \in \mZ/p^i, \quad a_{i+1}\equiv a_i \mod p^i}.\end{align*}
+\end{definition}
+
+\begin{exercise}{}{}
+    From Irina: What are all possible GROUP homomorphisms from 
+    \begin{enumerate}
+        \item $\mZ$ to $\mF_2$
+        \item $\mF_2$ to $\mF_2$
+        \item $\mZ$ to $\mF_4$
+        \item $\mF_4$ to $\mF_2$
+        \item $\mF_2$ $\mF_4$
+        \item $\mZ_2$ to $\mF_2$
+    \end{enumerate}
+\end{exercise}
