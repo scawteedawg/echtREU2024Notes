@@ -1,10 +1,60 @@
 \section{Day 1}
 
-\begin{tcolorbox}[colback = black,coltext = white]{Plan}
+\begin{tcolorbox}[colback = black,coltext = white]{Plan}{}
+
     We are going to try and compute $$\pi_\ast(E^{hC_6}\wedge V(0)).$$
 \end{tcolorbox}
 Let's define a few things. 
 \begin{itemize}
     \item $C_6$ is a cyclic group of order 6.
-    \item $E^{hC_6}$ is a Morava $E$-theory and this is a spectrum.
+    \item $E^{hC_6}$ is a Morava $E$-theory and this is a spectrum (think a space).
+    \item $E(n,p)$ has $n$ the {chromatic height} and $p$ a {prime}.
+    \item $G\acts$ on sets, spaces, or spectra. 
+    \item Let $S$ be a space with a $G$-action. \index{fixed points}\index{fixed points!homotopy}
+    \begin{align*}
+        S^G&=\sets{s\in S\mid g\cdot s = s~\forall g\in G}& E^{hC_6}&:=\sets{\text{homotopy $G$ fixed points}}\\
+        & = \sets{G\text{-fixed points of }S}
+    \end{align*}
+    \item $X\wedge Y$ is the {smash product}\index{smash product} of $X,Y$ and is defined to be $$X\wedge Y:= \frac{X\by Y}{X\vee Y}.$$
+    \item $V(0):=\mS/2$ the {Moore space}. Take a sphere $S^n$, and consider the degree map $S^n\xr{m}S^n$. Here is an instance of this map. $$S^n\xr{2}S^n\vee S^n\to S^n.$$ 
+    \begin{center}
+        \begin{tikzpicture}
+            \draw[vantablack,shading = ball] (0,0) circle (1);
+            \draw[->] (1.1,0) -- (1.9,0);
+            \draw[vantablack,shading = ball] (2.5,.5) circle (.5);
+            \draw[vantablack,shading = ball] (2.5,-.5) circle (.5);
+            \draw[blue!80!black,fill = blue!80!black] (2.5,0) circle (.05);
+            \draw [->] (3.1,0)--(3.9,0);
+            \draw[vantablack,shading = ball] (5,0) circle (1);
+            \draw (1.5,.2) node {\tiny pinch};
+            \draw (3.5,.2) node {\tiny fold};
+        \end{tikzpicture}
+    \end{center}
+    The thing to take away is that for a degree $m$-map between $n$-spheres, you can create this map as a composition $$S^n\xr{\text{pinch}}\bigvee_1^m S^n\xr{\text{fold}}S^n$$ to get a degree $m$ map. More details about this can be found in \cite[\S 2.2]{Hatcher}
+    \item The {sphere spectrum}\index{spectrum!sphere spectrum} is a topological object which can be written as $$\mS:=\sets{S^0,S^1,S^2,\dots}.$$ FACT: We can define a degree $m$ map on the sphere spectrum. 
+    \item Fiber/cofiber sequences:\index{fiber sequence}\index{cofiber sequence}. In spectra, fiber and cofiber sequences are the same! This is an anolog of a short exact sequence for groups. Here's an example. Consider the map 
+    \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        \mZ\ar[r,"\by 2"]\& \mZ \\ [-20pt]
+        0\ar[r,mapsto] \& 0\\[-20pt]
+        1\ar[r,mapsto]\& 2.
+      \end{tikzcd}
+    \end{center}
+    The kernel of this map is 0! The cokernel of this map is $\mZ/2$. This gives a short exact sequence of groups $$0\to \mZ\xhookrightarrow{\by 2}\mZ\onto \mZ/2\to 0.$$ We can do an analog with spectra to get $$\mS\xr{2}\mS\to \underbrace{V(0)}_{\text{cofiber}(2)}\to \Sigma \mS\xr{\Sigma 2}\Sigma \mS\to \Sigma V(0)\to \cdots.$$
+
+    Note: there is a way to understand fibers and cofibers as pushout and pullback diagrams. 
+    \item For spaces $\Sigma$, aka reduced suspension\index{suspension!reduced}, exists for all $n\in \mN$; you can suspend a space however many times you want, $\Sigma^n$. In spectra-land, you can \emph{negatively}-suspend a space, aka desuspend the space, i.e. you can do $\Sigma^n$ for all $n\in \mZ$. 
+    \item $\ds\pi_\ast = \bigoplus_{i\in \mZ} \pi_i$. Here \begin{align*}
+        \pi_n(X)&:=\text{Maps}(S^n,X)_{/\text{homotopy}}.
+    \end{align*} Sometimes we write this as $[S^n,X]$ so we have to type less!
+    \item Let $X$ be a space, and let $f\in \pi_n(X), g\in \pi_m(X)$, meaning that we have $$f:S^n\to X, g:S^m\to X.$$ What is $f\cdot g$ if we're talking about $\pi_\ast$ having a ``ring structure.'' Then we have 
+    \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        \& X\wedge S^m\ar[dr,"\uno \by g"]\&\\
+        S^{n+m}= S^n\wedge S^m\ar[ur,"f\wedge \uno"]\ar[dr,"\uno \wedge g"']\ar[rr,"f\wedge g"]\& \&X\wedge X\ar[r,"\mu"]\& X\\
+        \& S^n\wedge X\ar[ur,"f\wedge \uno"']
+      \end{tikzcd}
+    \end{center}
+    which gives us a map $\pi_{n+m}(X\wedge X)$. If we have a map $X\wedge X \xr{\mu} X$, then we're good; this is an honest to goodness ring! An instance of this is $S^0$. Try it out! For us $V(0) = \text{Cofiber}(2)$ is not a ring. 
 \end{itemize}
+
