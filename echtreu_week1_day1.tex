@@ -48,7 +48,7 @@ Let's define a few things.
     \item $\ds\pi_\ast = \bigoplus_{i\in \mZ} \pi_i$. Here \begin{align*}
         \pi_n(X)&:=\text{Maps}(S^n,X)_{/\text{homotopy}}.
     \end{align*} Sometimes we write this as $[S^n,X]$ so we have to type less!
-    \item Let $X$ be a space, and let $f\in \pi_n(X), g\in \pi_m(X)$, meaning that we have $$f:S^n\to X, g:S^m\to X.$$ What is $f\cdot g$ if we're talking about $\pi_\ast$ having a ``ring structure.'' Then we have 
+    \item Let $X$ be a space, and let $f\in \pi_n(X), g\in \pi_m(X)$, meaning that we have $$f:S^n\to X, \quad g:S^m\to X.$$ What is $f\cdot g$ if we're talking about $\pi_\ast$ having a ``ring structure.'' Then we have 
     \begin{center}
       \begin{tikzcd}[ampersand replacement = \&]
         \& X\wedge S^m\ar[dr,"\uno \by g"]\&\\
@@ -169,14 +169,3 @@ Oftentimes, we are interested in some module $M$, and we know that it fits into 
     Another ring of interest is the $p$-adic integers $\mZ_p$ also denoted $\mZ_p^\wedge$ where $\wedge$ means completed. Another way to write this is \begin{align*}\mZ_p = \mZ_p^\wedge &= \varprojlim \mZ/p^k\\ &= \varprojlim(\cdots \to \mZ/p^3\to \mZ/p^2\to\mZ/p\to 0)\\ & = \sets{(a_1,a_2,\dots)\mid a_i \in \mZ/p^i, \quad a_{i+1}\equiv a_i \mod p^i}.\end{align*}
 \end{definition}
 
-\begin{exercise}{}{}
-    From Irina: What are all possible GROUP homomorphisms from 
-    \begin{enumerate}
-        \item $\mZ$ to $\mF_2$
-        \item $\mF_2$ to $\mF_2$
-        \item $\mZ$ to $\mF_4$
-        \item $\mF_4$ to $\mF_2$
-        \item $\mF_2$ to  $\mF_4$
-        \item $\mZ_2$ to $\mF_2$
-    \end{enumerate}
-\end{exercise}

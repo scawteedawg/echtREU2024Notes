@@ -1,0 +1,77 @@
+\pagestyle{plain}
+\thispagestyle{empty}
+
+\noindent
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} r @{\extracolsep{6pt}} l}
+\textbf{\class} & \textbf{Name:\hspace{1.4in}} & \textit{}\\ %Your name here instead, obviously 
+\textbf{\examnum} &&\\
+\textbf{06/10/2024} &&\\
+\textbf{\timelimit} &&\\
+\end{tabular*}\\
+\rule[2ex]{\textwidth}{2pt}
+% ---
+
+\begin{enumerate}
+\item If $m,n>1$ are integers, construct an exact sequence of abelian groups of the form
+\[\begin{tikzcd}
+0 \ar[r] & \mathbb{Z}/m \ar[r] & \mathbb{Z}/mn \ar[r] & \mathbb{Z}/n \ar[r] & 0.
+\end{tikzcd} \]
+\item 
+    If 
+    \[ \begin{tikzcd}
+        0 \ar[r] & V' \ar[r,"f"] & V \ar[r,"g"] & V'' \ar[r] & 0
+    \end{tikzcd}\]
+    is a short exact sequence of vector spaces, prove that 
+    \[
+    \dim V = \dim V' + \dim V''
+    \]
+
+\item 
+    If 
+    \[ \begin{tikzcd}
+        0 \ar[r] & V' \ar[r,"f"] & V \ar[r,"g"] & V'' \ar[r] & 0
+    \end{tikzcd}\]
+    is a short exact sequence of vector spaces, prove that $V \cong V' \oplus V''$. ({\it Bonus: Is this isomorphism canonical? In other words, does it require any choices? })
+
+\item 
+    Give an example of a short exact sequence of modules
+    \[ \begin{tikzcd}
+        0 \ar[r] & M' \ar[r,"f"] & M \ar[r,"g"] & M'' \ar[r] & 0
+    \end{tikzcd}\]
+    such that $M$ is NOT isomorphic to $M' \oplus M''$. 
+
+
+\item (The Splitting Lemma)
+    Suppose     
+    \[ \begin{tikzcd}
+        0 \ar[r] & M' \ar[r,"f"] & M \ar[r,"g"] & M'' \ar[r] & 0
+    \end{tikzcd}\]
+    is a short exact sequence of modules. Prove that the following are equivalent.
+    \begin{enumerate}
+        \item $M \cong M' \oplus M''$, $f$ is the standard inclusion, and $g$ is the standard projection.
+        \item There exists a map $s:M'' \to M$ such that $g \circ s = id_{M''}$.
+        \item There exists a map $t:M \to M'$ such that $t \circ f = id_{M'}$.
+    \end{enumerate}
+
+
+\item 
+    Generalizing 1., if
+    \[ \begin{tikzcd}
+        0 \ar[r] & V_n \ar[r,"f_n"] & V_{n-1} \ar[r,"f_{n-1}"] & \cdots \ar[r,"f_2"] & V_1 \ar[r,"f_1"] & V_0 \ar[r] & 0
+    \end{tikzcd}\]
+    is an exact sequence of vector spaces, prove that 
+    \[
+    \dim V_n - \dim V_{n-1} + \cdots \pm \dim V_1 \mp \dim V_0 = 0
+    \]
+
+    \item What are all possible group maps from 
+    \begin{enumerate}
+        \item $\mathbb{Z}$ to $\mathbb{F}_2$?
+        \item $\mathbb{F}_2$ to $\mathbb{F}_2$?
+        \item $\mathbb{Z}$ to $\mathbb{F}_4$?
+        \item $\mathbb{F}_4$ to $\mathbb{F}_2$?
+        \item $\mathbb{F}_2$ to $\mathbb{F}_4$?
+        \item $\mathbb{Z}_2$ to $\mathbb{F}_2$?
+    \end{enumerate}
+
+\end{enumerate}

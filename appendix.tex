@@ -1,0 +1,80 @@
+\chapter{Appendix}
+\newcommand{\defindex}[1]{#1}
+\newcommand{\scottycomment}[1]{\footnote{#1}}
+\begin{definition}{pullbacks}{pullback}
+    Let $\calC$ be a category which contains the diagram \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        \&Y\ar[d,"g"]\\
+        X\ar[r,"f"]\& Z
+      \end{tikzcd}.
+    \end{center}
+    A \defindex{pullback} of this diagram $W$ is 3 pieces of information
+    \begin{itemize}
+        \item An object $\textcolor{wonglightblue}{W}\in \text{ob}(\calC)$
+        \item A map $\textcolor{wonglightblue}{W\xr{p_1}}X$
+        \item A map $\textcolor{wonglightblue}{W\xr{p_2}}Y$
+    \end{itemize} such that 
+    \begin{itemize}
+        \item[-] The diagram   \begin{tikzcd}[ampersand replacement = \&]
+            \textcolor{wonglightblue}{W}\ar[r,wonglightblue,"p_2"]\ar[d,wonglightblue,"p_1"']\ar[dr,phantom,"\circlearrowright"]\&Y\ar[d,"g"]\\
+            X\ar[r,"f"]\& Z 
+          \end{tikzcd} commutes \scottycomment{``$\circlearrowright$'' is a `long'hand for commutes, and people usually suppress it from notation.}
+          \item[-] If someone hands you a commutative diagram \begin{tikzcd}[ampersand replacement = \&]
+            \textcolor{wongpink}{A}\ar[r,wongpink,"h_2"]\ar[d,wongpink,"h_1"']\ar[dr,phantom,"\circlearrowright"]\&Y\ar[d,"g"]\\
+            X\ar[r,"f"]\& Z 
+          \end{tikzcd}, then there is a \emph{UNIQUE} map $\tilde{h}$ such that \begin{tikzcd}[ampersand replacement = \&,background color = wonglightblue!5]
+            \textcolor{wongpink}{A}\ar[drr,bend left = 20,"h_2",wongpink]\ar[ddr,phantom,"\circlearrowright"]\ar[drr,phantom,"\circlearrowright"]\ar[ddr,wongpink,bend right = 20,"h_1"']\ar[dr,thick,green!50!black,"{\tilde{h}}"]\&\&\\
+            \&\textcolor{wonglightblue}{W}\ar[r,wonglightblue,"p_2"]\ar[d,wonglightblue,"p_1"']\ar[dr,phantom,"\circlearrowright"]\&Y\ar[d,"g"]\\
+            \&X\ar[r,"f"]\& Z 
+          \end{tikzcd}.
+    \end{itemize}
+    \scottycomment{As a shorthand, people usually write the pullback like this: 
+    \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        W\ar[r]\ar[d]\ar[dr,phantom,"\lrcorner",very near start]\& Y\ar[d]\\
+        X\ar[r]\&Z\\
+      \end{tikzcd}
+    \end{center}}
+
+    \medskip
+    Let \textcolor{wongorange}{$\calC$} be a category with a subcategory \textcolor{wonglightblue}{$\calD$}. We say \textcolor{wonglightblue}{$\calD$} is \defindex{closed under pullbacks} by morphisms in \textcolor{wongorange}{$\calC$} if for all arrows \textcolor{wonglightblue}{$X\xr{f}Z$} in $\textcolor{wonglightblue}{\calD}$ and for all $\textcolor{wongorange}{Y\xr{g}Z}$ in \textcolor{wongorange}{$\calC$} such that we can form the pullback   \begin{tikzcd}[ampersand replacement = \&]
+        W\ar[r,"p_1",wonglightblue]\ar[d,"p_2"]\ar[dr,phantom,"\lrcorner",very near start]\& Y\ar[d,"g",]\\
+        X\ar[r,"f"]\& Z
+      \end{tikzcd}, then the arrow \textcolor{wonglightblue}{$W\xr{p_1}Z$} is in \textcolor{wonglightblue}{$\calD$}.
+\end{definition}
+
+\begin{definition}{pushouts}{pushout}
+    Let $\calC$ be a category which contains the diagram \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        Z\&Y\ar[from =l,"g"]\\
+        X\ar[from = u,"f"]\& 
+      \end{tikzcd}.
+    \end{center}
+    A \defindex{pushout} of this diagram $W$ is 3 pieces of information
+    \begin{itemize}
+        \item An object $\textcolor{wonglightblue}{W}\in \text{ob}(\calC)$
+        \item A map $X\textcolor{wonglightblue}{\xr{i_1}W}$
+        \item A map $Y\textcolor{wonglightblue}{\xr{i_2}W}$
+    \end{itemize} such that 
+    \begin{itemize}
+        \item[-] The diagram   \begin{tikzcd}[ampersand replacement = \&]
+            Z\&Y\ar[from =l,"g"]\ar[d,wonglightblue,"i_2"]\\
+            X\ar[from = u,"f"]\ar[r,wonglightblue,"i_1"]\& \textcolor{wonglightblue}{W}
+          \end{tikzcd} commutes 
+          \item[-] If someone hands you a commutative diagram \begin{tikzcd}[ampersand replacement = \&]
+            Z\&Y\ar[from =l,"g"]\ar[d,wongpink,"\ell_2"]\\
+            X\ar[from = u,"f"]\ar[r,wongpink,"\ell_1"]\& \textcolor{wongpink}{A}
+          \end{tikzcd}, then there is a \emph{UNIQUE} map $\tilde{\ell}$ such that \begin{tikzcd}[ampersand replacement = \&,background color = wonglightblue!5]
+            Z\&Y\ar[from =l,"g"]\ar[d,wonglightblue,"i_2"]\ar[ddr,bend left = 20,"\ell_2",wongpink]\&\\
+            X\ar[from = u,"f"]\ar[r,wonglightblue,"i_1"]\ar[drr,bend right = 20,"\ell_1"',wongpink]\& \textcolor{wonglightblue}{W}\ar[dr,green!50!black,"\tilde{\ell}",thick]\&\\
+            \&\& \textcolor{wongpink}{A}
+          \end{tikzcd}.
+    \end{itemize}
+    \scottycomment{As a shorthand, people usually write the pushout like this: 
+    \begin{center}
+        \begin{tikzcd}[ampersand replacement = \&]
+            Z\ar[dr,"\ulcorner",very near end,phantom]\&Y\ar[from =l,"g"]\ar[d,"i_2"]\\
+            X\ar[from = u,"f"]\ar[r,"i_1"]\& {W}
+          \end{tikzcd}
+    \end{center}}
+\end{definition}
