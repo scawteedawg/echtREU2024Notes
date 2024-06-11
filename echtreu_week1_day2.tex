@@ -96,5 +96,15 @@ We aren't trying to give homework! This is your job! There is no need to work ou
     \begin{definition}{Maps between spectra, version 3}{}
         A map of spectra $f:E\to F$ of degree $r$ is a homotopy class of functions of spectra $f:E\to F$ of degree $r$ where the function is defined ``in the limit.'' Find the maps between high enough $E_N$, and worry about the early ones later on. Scotty heard from his advisor that this philosophy is ``cells now, maps later.''
     \end{definition}
+    \alerttext{NOTATION:} When we talk about maps from spectra to spectra of degree $r$, we denote the collection of homotopy classes of maps of degree $r$ between the two spectra as $$[E,F]_r.$$
+    \item Homology and cohomology. Let $E,X$ be spectra. 
+    
+    \begin{definition}{Homology and Cohomology}{}
+        The $E$th cohomology of $X$ in degree $r$ is $$E^r(X):=[X,E]_{-r},$$ maps of spectra $X\to E$ which lower degree by $r$. 
+    
+        The $E$th homology of $X$ in degree $r$ is $$E_r(X)=[\mS,E\wedge X]_r = \pi_r(E\wedge X).$$
+    \end{definition}
+    When I say coefficients of a spectrum $E$, what I really mean is $E_r(\ast) = \pi_r E = E^{-r}(\ast)$. This is usually written $E_\ast$ to collect all $r$ into one neat little package. By this we mean $$E_\ast = \bigoplus_{r\in \mZ} E_r(\ast).$$
+    \item Given a map of spectra $f:X\to Y$, define $$(Y\cup_f CX)_n:=Y_n\cup_{f_n}(I_+\wedge X_n).$$ This gives us a long cofiber sequence of spectra $$\cdots\to\Omega X\to \Omega Y\to\Omega \text{Cof } fX\xr{f}Y\xr{i}\underbrace{Y\cup_f CX}_{\text{Cof }f}\to \underbrace{(Y\cup_f CX)\cup_i CY}_{\Sigma X}\to \Sigma Y\to \cdots.$$ Here $\Omega(-) = \mathsf{Map}(\mS^1,-)$, the loops. And in spectra, $\Omega$ is something like $\Sigma\inv$. 
 \end{enumerate}
 
