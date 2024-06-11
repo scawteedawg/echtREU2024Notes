@@ -12,7 +12,7 @@ The plan for tomorrow is to do the following.
 We aren't trying to give homework! This is your job! There is no need to work outside of working hours. Please try to get \LaTeX installed into your computer by tomorrow so we can practice it! Feel free to ask Irina, Jack, and Scotty for help. 
 
 \lineyspace
-\subsection{Lecture 1: Spectra}
+\subsection{Lecture 1 (Irina Bobkova): Spectra}
 
 \begin{enumerate}
     \item $\Sigma$, the reduced suspension, is a functor among topological spaces. $\pi_\ast$ is another functor from topological spaces to groups. There is a map, \begin{center}
@@ -109,3 +109,161 @@ We aren't trying to give homework! This is your job! There is no need to work ou
 \end{enumerate}
 Here, we have been using a lot from the blue book: \cite[pg. 123, \S 3]{adams1974stable}. Here is a \href{https://people.math.rochester.edu/faculty/doug/otherpapers/Adams-SHGH.pdf}{pdf link}. 
 
+\newpage
+
+\subsection{Lecture 2 (Jack Carlisle): Homological Algebra and Group Cohomology}
+
+\subsubsection{Homological Algebra}
+\begin{definition}{Chain complex}{}
+    A {chain complex} is $$\cdots \xr{d_{n+2}}C_{n+1}C_{n+1}\xr{d_{n+1}}C_{n}\xr{d_n}C_{n-1}\xr{d_{n-1}}\cdots$$ such that 
+    \begin{itemize}
+        \item[-] For all $i$, $d_{i-1}d_i = 0$. Another way people write this is $d\circ d =0$ or $d^2 =0$.  
+    \end{itemize}
+\end{definition}
+\begin{example}{}{}\label{example:w1d2ex1}
+    $$0\to \mZ\xr{\by 5} \mZ\xr{\by 0} \mZ\xr{\by 2}\mZ\to 0.$$
+    Notice that composing any two differentials, we get 0! This means that we have a chain complex. 
+\end{example}
+\begin{example}{}{}\label{example:w1d2ex2}
+    An exact sequence of $R$-modules $$\cdots \xr{f_{n+2}} M_{n+1}\xr{f_{n+1}} M_n\xr{f_{n}} M_{n-1}\xr{f_{n-1}} M_{n-2}\xr{f_{n-2}} \cdots$$ is an example of an exact sequence. By exactness, we get that $$f_{n+1}(m) \in \Im(f_{n+1}) = \ker(f_n)\implies f_nf_{n+1}m = 0$$ so the composition of any two is zero. 
+
+    Here recall that exactness means that for all $n$, $$\ker f_n = \Im f_{n+1}.$$
+\end{example}
+
+\begin{definition}{Homology of a chain complex}{}
+    The homology of a chain complex $C = (C_\bullet, d_\bullet)$ is defined to be $$H_n(C):= \frac{\ker d_n}{\Im d_{n+1}}, \qquad H_\ast(C):=\bigoplus_{n\in \mZ}H_n(C).$$
+\end{definition}
+
+\begin{example}{Example above continued}{}
+    Let's calculate the homology from \ref{example:w1d2ex1}, $$\underbrace{0}_4\to \underbrace{\mZ}_3\xr{\by 5} \underbrace{\mZ}_2\xr{\by 0} \underbrace{\mZ}_1\xr{\by 2}\underbrace{\mZ}_0\to \underbrace{0}_{-1}.$$ From this, we get 
+    \begin{align*}
+        H_0(C)& =\frac{\ker (\mZ\to 0)}{\Im(\mZ\xr{\by 2}\mZ)} = \mZ/2\\
+        H_1(C)& =\frac{\ker (\mZ\xr{\by 2} \mZ)}{\Im(\mZ\xr{\by 0}\mZ)} = 0\\
+        H_2(C)& =\frac{\ker (\mZ\xr{\by 0} \mZ)}{\Im(\mZ\xr{\by 5}\mZ)} = \mZ/5\\
+        H_3(C)& =\frac{\ker (\mZ\xr{\by 5} \mZ)}{\Im(0\to \mZ)} = 0\\
+    \end{align*}
+    This means that $$H_n(C):= \begin{cases}
+        \mZ/2 & n = 0\\
+        \mZ/5 & n= 2\\
+        0 & \text{otherwise}
+    \end{cases}.$$
+\end{example}
+\begin{definition}{Map of Chain complexes}{}
+    A map of chain complexes $$f:C\to D$$ is
+    \begin{itemize}
+        \item A collection of maps $f_i:C_i\to D_i$
+    \end{itemize}
+    such that 
+    \begin{itemize}
+        \item[-]   \begin{tikzcd}[ampersand replacement = \&]
+            C_i\ar[r,"d_i^C"]\ar[d,"f_i"]\& C_{i-1}\ar[d,"f_{i-1}"]\\
+            D_i\ar[r,"d_i^D"]\& D_{i-1}
+          \end{tikzcd}, or in equation form, we have $d_i^D \circ f_i = f_{i-1}\circ d_i^C$. 
+    \end{itemize}
+\end{definition}
+\begin{lemma}{}{}
+    If $f:C\to D$ is a chain map, then $f$ induces a map $$H_\ast(f):H_\ast(C)\to H_\ast(D).$$
+\end{lemma}
+\begin{proof}The proof should come from this diagram! Take a look at how to make  it work. 
+    \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        \&C_n\ar[r,"f_n"]\& D_n\&\\[-10pt]
+        \&\ker(d_n^C)\ar[u,phantom, "\cup"]\ar[r]\ar[dr]\&\ker(d_n^D)\ar[u,phantom,"\cup"]\ar[d,twoheadrightarrow]\\
+        H_n(C) \ar[r,phantom,"="]\&[-20pt] \ds\frac{\ker d_n^c}{\Im d_{n+1}^c}\ar[r]\& \ds \frac{\ker d_n^D}{\Im d_{n+1}^D}\ar[r,phantom,"="]\&[-20pt] H_n(D)
+      \end{tikzcd}
+    \end{center}
+    Our condition implies that $f(\ker(d_n^C))\subset \ker d_n^D$. Also it means that $f(\Im(d_{n+1}^C))\subset \Im(d_{n+1}^D)$. This completes our proof, so long as you work through the details!
+\end{proof}
+
+\begin{definition}{Chain homotopy}{}
+    Suppose $f,g:C\to D$ are chain maps. A {homotopy} $h$ from $f$ to $g$ is a collection of maps $h_i:C_i\to D_{i+1}$ such that $$f_i - g_i = d h_i + h_{i-1} d.$$
+\end{definition}
+
+\begin{fact}{}{}
+    If $f,g:C\to D$ are homotopic chain maps, then $$H_\ast(f) = H_\ast(g)$$ as maps between $H_\ast(C)\to H_\ast(D)$. 
+
+    \alerttext{This will appear in your problem set!}
+\end{fact}
+
+Hey, Jack! What about cohomology?
+
+\begin{remark}{}{}
+    Sometimes we will work instead of with chain complexes, we'll work with {cochain complexes}. These are the same as chain complexes except the differentials \emph{INCREASE} degree. Let's compare
+    \begin{align*}
+        \text{Chain Complex }& \cdots \to C_{n+1}\xr{d_{n+1}}C_n\xr{d_n}C_{n-1}\xr{d_{n-1}}\cdots\\
+        \text{Cochain Complex }& \cdots \to C^{n-1}\xr{d^{n-1}}C^n\xr{d^n}C^{n+1}\xr{d^{n+1}}\cdots\\
+    \end{align*}
+    If $C = (C^\bullet, d^\bullet)$ is a cochain complex, then the cohomology of $C$ is $$H^n(C): = \frac{\ker d^n}{\Im d^{n-1}}.$$
+\end{remark}
+
+\newpage
+\subsubsection{Group Cohomology}
+
+Group cohomology is a ``machine'' which eats a finite Abelian group $G$ an spits out a cohomology group $H^\ast(G;\mZ)$. More generally, we can start with a finite group $G$ and a coefficient group $M$ to get the group cohomology $G$ with coefficients in $M$ ($M$ ends up being a $\mZ[G]$-module), written as $H^\ast(G;M)$. 
+
+But Jack! How do we calculate this?
+
+\begin{definition}{Calculation of Group Cohomology}{}
+    \textbf{Step 1:} Find a free resolution of $\mZ$ by free $\mZ[G]$-modules. In other words, we'd like an exact sequence
+    $$\cdots\to F_2\to F_1\to F_0\to \mZ\to 0$$
+    with $F_i$ a free $\mZ[G]$-module. In other words, we want $F_i\cong \bigoplus_{?}\mZ[G]$.\footnote{Recall that $\mZ[G] = \sets{\sum_1^n a_i g_i\mid a_i\in \mZ, g_i\in G}$. Another way to say this is all finite sums of elements of $G$ where multiplication works the way you'd want it. By this, I specifically mean $(5g+2g')\times (6h) = 30(gh)+12(g'h)$. \\For a specific example, $\mZ[C_2] = \mZ[x]/(x^2-1 = 0)$. \\For the general definition, $\mZ[G] = \mZ[x_g\mid g\in G]/ x_gx_h = x_{gh}, x_e = 1$. \\Note that $\mZ$ is a $\mZ[G]$-module by $G$ acting trivially on $\mZ$.} 
+
+    \medskip
+    \textbf{Step 2:} Apply the functor $\Hom_{\mZ[G]}(-,M)$. Now, take the free part of our resolution 
+    \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        {\cdots\to F_2\to F_1\to F_0}\ar[d,"{\Hom_{\mZ[G]}(-,M)}"]\\
+        {\cdots \from \Hom_{\mZ[G]}(F_2,M)\from \Hom_{\mZ[G]}(F_1,M)\from \Hom_{\mZ[G]}(F_0,M).}
+      \end{tikzcd}
+    \end{center}
+    This second sequence is a cochain complex of Abelian groups ($\mZ[G]$-modules).
+    
+    \medskip
+    \textbf{Step 3:} Take cohomology groups of this cochain complex!\footnote{This is also recognizable as the \href{https://en.wikipedia.org/wiki/Ext_functor}{Ext functor}!} $$H^n(G;M): = \text{The $n$th cohomology group of the cochain complex above.}$$
+\end{definition}
+\begin{example}{Example calculation of group cohomology}{}
+    Let $G = C_2$ and suppose $M =\mF_2$ with trivial $C_2$-action ($C_2$ does nothing). Let's calculate $H^\ast(C_2;\mF_2)$. 
+
+    \medskip
+    \textbf{Step 1:} Let's find our free resolution. Lucky for us, Jack found one already, and let's see what it is and verify this is in fact a good resolution. 
+
+    For notation, let $\mZ[C_2] = \mZ[y]/(y^2-1)$. The following sequence is a free resolution: 
+    $$\xr{(-)\cdot(y-1)}\underbrace{\mZ[C_2]}_{F_2}\xr{(-)\cdot(y+1)}\underbrace{\mZ[C_2]}_{F_1}\xr{(-)\cdot (y-1)}\underbrace{\mZ[C_2]}_{F_0}\xr{y\mapsto 1}\mZ\to 0.$$ Prove that this is an exact sequence!
+
+    \medskip
+    \textbf{Step 2:} Apply $\Hom_{\mZ[C_2]}(-,\mF_2)$. We'll drop the subscript to declutter. 
+
+    $$\cdots \from \Hom(\mZ[C_2],\mF_2)\from \Hom(\mZ[C_2],\mF_2)\from \Hom(\mZ[C_2],\mF_2)$$ which corresponds to $$\cdots\xleftarrow{(-)\cdot 0} \mF_2\xleftarrow{(-)\cdot 0} \mF_2\xleftarrow{(-)\cdot 0} \mF_2\xleftarrow{(-)\cdot 0} \mF_2\xleftarrow{(-)\cdot 0} \mF_2\xleftarrow{(-)\cdot 0} \mF_2.$$
+    
+    \medskip
+    \textbf{Step 3:} Let's take cohomology groups! 
+    \begin{align*}
+        H^0(C_2;\mF_2)& = \frac{\ker (\mF_2\xr{0}\mF_2)}{\Im(0\to \mF_2)} = \mF_2\\
+        H^1(C_2;\mF_2)& = \frac{\ker (\mF_2\xr{0}\mF_2)}{\Im(\mF_2\xr{0} \mF_2)} = \mF_2\\
+        H^2(C_2;\mF_2)& = \frac{\ker (\mF_2\xr{0}\mF_2)}{\Im(\mF_2\xr{0} \mF_2)} = \mF_2\\
+    \end{align*}
+    Finally, this gives us $$H^n(C_2;\mF_2) = \begin{cases}
+        \mF_2 & n\geq 0\\ 
+        0 & n< 0.
+    \end{cases}$$
+\end{example}
+
+\begin{example}{$H^\ast (C_2;\mZ)$ where $\mZ$ has a trivial $C_2$ action ($C_2$ does nothing)}{}
+    \textbf{Step 1:} Take this free resolution: $$\xr{(-)\cdot(y-1)}\underbrace{\mZ[C_2]}_{F_2}\xr{(-)\cdot(y+1)}\underbrace{\mZ[C_2]}_{F_1}\xr{(-)\cdot (y-1)}\underbrace{\mZ[C_2]}_{F_0}\xr{y\mapsto 1}\mZ\to 0.$$
+
+    \medskip 
+    \textbf{Step 2:} Apply $\Hom_{\mZ[C_2]}(-,\mZ)$ to the complex to get a cochain complex $$\cdots \xleftarrow{(-)\cdot 2} \mZ\xleftarrow{(-)\cdot 0} \mZ\xleftarrow{(-)\cdot 2} \mZ\xleftarrow{(-)\cdot 0} \mZ$$
+    \textbf{Step 3:} Take group cohomology! 
+    \begin{align*}
+        H^0(C_2;\mZ) & = \frac{\ker(\mZ\xr{0}\mZ)}{\Im(0\to \mZ)} = \mZ\\
+        H^1(C_2;\mZ) & = \frac{\ker(\mZ\xr{2}\mZ)}{\Im(\mZ\xr{0} \mZ)} = 0\\
+        H^2(C_2;\mZ) & = \frac{\ker(\mZ\xr{0}\mZ)}{\Im(\mZ\xr{2} \mZ)} = \mZ/2\\
+        \vdots&
+    \end{align*}
+    Which ends up resulting in $$H^n(C_2;\mZ) = \begin{cases}
+        \mZ & n = 0\\
+        \mZ/2 & n>0 \text{ and even}\\
+        0 & \text{else}.
+    \end{cases}$$
+    As a fun little surprise, look up $H^\ast(\mRP^\infty;\mZ)$. Do you notice anything?
+\end{example}
