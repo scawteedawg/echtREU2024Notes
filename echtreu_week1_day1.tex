@@ -65,7 +65,7 @@ Let's define a few things.
 \subsection{Spectra}
 
 \begin{definition}{Spectrum}{}
-    A {spectrum}\index{spectrum}\footnote{What we describe here is sometimes referred to as a prespectrum. Some people require a spectrum to have the structure maps as homeomorphisms.} $X$ is a collection of pointed spaces $$\sets{X_0,X_1,X_2,\dots} = \sets{X_n}_{n\in \mN}$$ together with structure maps $$\Sigma X_n\to X_{n+1}.$$
+    A {spectrum}\index{spectrum}\footnote{What we describe here is sometimes referred to as a prespectrum. Some people require a spectrum to have the structure maps as $X_n\to \Omega X_{n+1}$ and homeomorphisms.} $X$ is a collection of pointed spaces $$\sets{X_0,X_1,X_2,\dots} = \sets{X_n}_{n\in \mN}$$ together with structure maps $$\Sigma X_n\to X_{n+1}.$$
 \end{definition}
 \begin{example}{}{}
     \begin{enumerate}
@@ -78,11 +78,23 @@ Let's define a few things.
     \begin{tikzcd}[ampersand replacement = \&,column sep =2cm]
       \mathsf{Top}_\ast\ar[r,shift left = 5pt,"\Sigma^\infty"]\ar[rr,bend left = 50,shift left = 5pt,"\Sigma^\infty"]\& \mathsf{PreSp}\ar[l,shift left = 5pt,"\Omega^\infty"] \ar[r,shift left = 5pt,"L"]\& \mathsf{Sp}\ar[l,shift left = 5pt, "U"]\ar[ll, bend left = 50,shift left = 5pt,"\Omega^\infty"]
     \end{tikzcd}
+
+    \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        \mathsf{PreSp}\ar[r,"L"]\& \mathsf{Sp} \\ [-20pt]
+        (X_n)_{n\in \mN}\ar[r,mapsto] \& (LX_n)_{n\in \mN}, \& LX_n:= \colim\parenths{X_n\into \Omega X_{n+1}\into \Omega^2 X_{n+t}\into \cdots}
+      \end{tikzcd}
+
+      \begin{tikzcd}[ampersand replacement = \&]
+        \mathsf{Sp}\ar[r,"\Omega^\infty"]\& \mathsf{Top}_\ast \\ [-20pt]
+        (X_n)_{n\in \mN}\ar[r,mapsto] \& X_0. \& \hspace{2.5in}~
+      \end{tikzcd}
+    \end{center}
   \end{center}
 
-``Why were spectra invented?'' you may ask. The answer comes in the form of Brown's representability theorem. To understand this, we need a few definitions. 
+``Why were spectra invented?'' you may ask. One answer comes in the form of Brown's representability theorem. To understand this, we need a few definitions. 
 \begin{definition}{}{}
-    A generalized homology theory $E$\index{generalized homology} $E$ is a functor $$E:\mathsf{Spaces}\to \mathsf{GradedAbGrps}$$ with the properties 
+    A generalized homology theory $E$\index{generalized homology} is a functor $$E:\mathsf{Spaces}\to \mathsf{GradedAbGrps}$$ with the properties 
     \begin{itemize}
         \item Homotopy: Homotopic spaces have the same homology.
         \item Exactness: Exact sequence in homology from a cofiber sequence. 
@@ -127,7 +139,7 @@ First, let's talk about commutative \emph{(order of multiplication doesn't matte
         \item $\mZ[G]$ for $G$ an abelian group, the group ring. 
         \item $\ds\mF_4:=\frac{\mF_2[x]}{(x^2+x+1)}$, \ul{the} field with 4($=2^2$) elements. 
         \item $\mZ[[x]] = \sets{\sum_0^\infty a_k x^k\mid \forall k, a_k\in \mZ}$, the power series ring
-        \item $\mZ((x))$, the laurent series ring. 
+        \item $\mZ((x))$, the Laurent series ring. 
     \end{itemize}
 \end{example}
 \subsubsection{Modules}
