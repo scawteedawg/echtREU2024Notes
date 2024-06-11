@@ -1,4 +1,9 @@
-\begin{thebibliography}{Hat02}
+\begin{thebibliography}{Ada74}
+
+\bibitem[Ada74]{adams1974stable}
+J.~Frank Adams.
+\newblock {\em Stable Homotopy and Generalised Homology}.
+\newblock University of Chicago Press, 1974.
 
 \bibitem[Hat02]{Hatcher}
 Allen Hatcher.
