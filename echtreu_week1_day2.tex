@@ -1,1 +1,100 @@
 \section{Day 2}
+The plan for the day is as follows. 
+\begin{enumerate}
+    \item Spectra
+    \item Algebra
+\end{enumerate}
+The plan for tomorrow is to do the following. 
+\begin{enumerate}
+    \item An example of a spectral sequence. This will use some group cohomology.
+    \item Showing the \texttt{spectralsequences} package in \LaTeX, and maybe some \LaTeX practice.
+\end{enumerate}
+We aren't trying to give homework! This is your job! There is no need to work outside of working hours. Please try to get \LaTeX installed into your computer by tomorrow so we can practice it! Feel free to ask Irina, Jack, and Scotty for help. 
+
+\lineyspace
+\subsection{Lecture 1: Spectra}
+
+\begin{enumerate}
+    \item $\Sigma$, the reduced suspension, is a functor among topological spaces. $\pi_\ast$ is another functor from topological spaces to groups. There is a map, \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        {\pi_{r+n}(S^n)}\ar[r,"\Sigma"]\& {\pi_{r+n+1}(S^{n+1})} \\ [-20pt]
+        {\parenths{S^{r+n}\xr{f}S^n}}\ar[r,mapsto] \& {\parenths{\underbrace{\Sigma S^{r+n}}_{S^{r+n+1}}\xr{\Sigma f}\underbrace{\Sigma S^n}_{S^{n+1}}}}\\[-20pt]
+        f\ar[r,mapsto]\& \Sigma f
+      \end{tikzcd}
+    \end{center}
+    $\pi_{n+r}(S^n)$ only depends on $r$ for $n$ large enough because of the {Freudenthal Suspension theorem}. Here, we get the definition of the stable homotopy groups of spheres, which we see as $$\pi_r^{st}:=\varinjlim_{n\geq 0}\parenths{\cdots\xr{\Sigma}\pi_{n+r}(S^n)\xr{\Sigma}\pi_{n+1+r}(S^{n+1})\xr{\Sigma}\cdots}$$
+    More generally, for any space $X$, you get $$\pi_{n+r}(\Sigma^n X)\xr{\cong}\pi_{n+1+r}(\Sigma^{n+1}X)$$ as long as $n$ is large enough. 
+    \begin{theorem}{Freudenthal Suspension Theorem}{}\index{Freudenthal Suspension Theorem}
+        Let $X$ be $(n-1)$ connected ($\pi_k(X)=0$ for $k = 0,\dots, n-1$). Note that we have maps $$\Sigma:\pi_qX\to \pi_{q+1}\Sigma X.$$ Then, when $q<2n-1$, $\Sigma$ is a bijection and when $q = 2n-1$, it is a surjection.
+    \end{theorem}
+    For us today, a ``space'' means a compactly generated, weakly Hausdorff topological space. This excludes spaces that are ``bad.'' \href{https://en.wikipedia.org/wiki/Compactly_generated_space}{See here for more about compactly generated} spaces and  \href{https://en.wikipedia.org/wiki/Weak_Hausdorff_space}{see here for weakly Hausdorff} spaces. 
+    \item A spectrum $E$ is 
+    \begin{itemize}
+        \item A collection of spaces $\sets{E_n}_{n=0}^\infty$
+        \item Structure maps $\alpha_n:\Sigma E_n\to E_{n+1}$. 
+    \end{itemize}
+    \begin{example}{}{}
+        \begin{multicols*}{2}
+            \begin{itemize}
+                \item Given a space $X$, we can cook a suspension spectrum $\Sigma^\infty X$, with 
+                \begin{itemize}
+                    \item Spaces: $\sets{(\Sigma^\infty X)_n}_n$ where $(\Sigma^\infty X)_n:=\Sigma^n X$
+                    \item Structure maps: $\alpha_n:\Sigma(\Sigma^n X)\xr{\cong}\Sigma^{n+1}X$. 
+                \end{itemize}
+                \columnbreak
+                \item $H_\ast(X;\mZ)$ comes from a spectrum called an {Eilenberg-MacLane spectrum}. The spectrum is denoted $H\mZ$ and the data of $H\mZ$ is given by 
+                \begin{itemize}
+                    \item Spaces: $H\mZ_n:=K(\mZ,n)$ the Eilenberg-MacLane space for $\mZ$ in degree $n$. This means that if a space $A$ is a $K(|mZ,n)$, then $\pi_n(A) = \mZ$ and $\pi_k(A)=0$ for all $k\neq n$.\footnote{$\mZ$ is a $K(\mZ,0)$, $S^1$ is a $K(\mZ,1)$, and $\mCP^\infty$ is a $K(\mZ,2)$. $S^0$ is a $K(\mZ/2,0)$, and $\mRP^\infty$ is a $K(\mZ/2,1)$.} 
+                    \item Structure maps: $\Sigma K(\mZ,n)\to K(\mZ,n+1)$. 
+                \end{itemize}
+            \end{itemize}
+        \end{multicols*}
+    \end{example}
+    \begin{definition}{Eilenberg MacLane spaces}{}
+        For any Abelian group $G$ and $n\geq 0$ there exists a space $X$ which is considered $K(G,n)$ such that $$\pi_k(X) =\begin{cases}
+            G & k = n\\
+            0 & \text{else}.
+        \end{cases}$$
+        See the \href{https://math.mit.edu/~mbehrens/18.906/notes/lec15.pdf}{construction here.}
+    \end{definition}
+    \item Homotopy Groups of a spectrum $E$
+    $$\pi_{n+r}E_n\xr{\Sigma}\pi_{n+1+r}E_{n+1}\xr{\alpha_n}\pi_{n+1+r}E_{n+1}.$$ On the left, the codimension (difference in the index) is $r$, and that matches with the group on the right! The codimension is also $r$ there. The $r$th stable group should hopefully convince you at the very least that there is something to the idea that if we did this forever, the homotopy group would ``stabilize'' once $n$ gets big enough!
+
+    \begin{definition}{Homotopy groups of a spectrum}{}
+        Let $E$ be a spectrum. The $r$th homotopy group of $E$ is defined to be:
+        $$\pi_r E:=\underset{n\to\infty}{\colim}~\pi_{n+r}E_n.$$
+    \end{definition}
+    If we take $E = \Sigma^\infty X$, then $\pi_n E = \pi_n^{st} X$, the stable homotopy groups of $X$. This definition recovers the definition of stable homotopy groups! Great!
+    \item Maps between spectra. 
+    
+    \begin{definition}{Maps of spectra, version 1}{}
+        Let $E, F$ be two spectra. A {map between spectra} $f:E\to F$ is a collection of maps $f_n:E_n\to F_n$ such that these $f_n$ are compatible with the structure maps ($\eps_n$ for $E$ and $\phi_n$ for $F$), i.e. for each $n$: 
+        \begin{center}
+          \begin{tikzcd}[ampersand replacement = \&]
+            \Sigma E_{n}\ar[r,"\eps_n"]\ar[d,"\Sigma f_n"']\ar[dr,phantom,"\circlearrowleft"]\& E_{n+1}\ar[d,"f_{n+1}"]\\
+            \Sigma F_n \ar[r,"\phi_n"] \& F_{n+1}
+          \end{tikzcd}
+        \end{center}
+    \end{definition}
+    This definition seems good! Let's try another definition and then we can compare and contrast which will be better for our purposes. Which definition will have better theorems?
+
+    Here is another construction. 
+    \begin{definition}{Maps between spectra, version 2}{}
+        What if instead, we take maps $f_n:E_n\to F_{n-r}$ where we decrease degree by $r$. We'd still like this to be compatible with structure maps. 
+        \begin{center}
+            \begin{tikzcd}[ampersand replacement = \&]
+              \Sigma^r E_{n-r}\ar[r,"\eps"]\ar[d,"\Sigma f_{n-r}"']\ar[dr,phantom,"\circlearrowleft"]\& E_{n}\ar[d,"f_{n}"]\\
+              \Sigma^r F_{n-2r} \ar[r,"\phi"] \& F_{n-r}
+            \end{tikzcd}
+          \end{center}
+    \end{definition}
+    Let's explore this a little bit. 
+
+    Consider the map $f:\mS\to \mS$ which is a degree 2 map, so we have maps $S^{n+2}\to S^n$. Note that $S^2\to S^0$ is nullhomotopic. $S^3\to S^1$ is nullhomotopic. However, $S^4\to S^2$ is not nullhomotopic and can be represented by $\eta^2$ (look up the Hopf map! There are several cool links if you ask one of us about them). 
+
+    Here is yet another construction!
+    \begin{definition}{Maps between spectra, version 3}{}
+        A map of spectra $f:E\to F$ of degree $r$ is a homotopy class of functions of spectra $f:E\to F$ of degree $r$ where the function is defined ``in the limit.'' Find the maps between high enough $E_N$, and worry about the early ones later on. Scotty heard from his advisor that this philosophy is ``cells now, maps later.''
+    \end{definition}
+\end{enumerate}
+
