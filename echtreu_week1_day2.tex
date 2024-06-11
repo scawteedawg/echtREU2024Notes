@@ -209,7 +209,7 @@ But Jack! How do we calculate this?
     with $F_i$ a free $\mZ[G]$-module. In other words, we want $F_i\cong \bigoplus_{?}\mZ[G]$.\footnote{Recall that $\mZ[G] = \sets{\sum_1^n a_i g_i\mid a_i\in \mZ, g_i\in G}$. Another way to say this is all finite sums of elements of $G$ where multiplication works the way you'd want it. By this, I specifically mean $(5g+2g')\times (6h) = 30(gh)+12(g'h)$. \\For a specific example, $\mZ[C_2] = \mZ[x]/(x^2-1 = 0)$. \\For the general definition, $\mZ[G] = \mZ[x_g\mid g\in G]/ x_gx_h = x_{gh}, x_e = 1$. \\Note that $\mZ$ is a $\mZ[G]$-module by $G$ acting trivially on $\mZ$.} 
 
     \medskip
-    \textbf{Step 2:} Apply the functor $\Hom_{\mZ[G]}(-,M)$. Now, take the free part of our resolution 
+    \textbf{Step 2:} Apply the functor $\Hom_{\mZ[G]}(-,M)$. Now, take the \emph{just the free part} of our resolution 
     \begin{center}
       \begin{tikzcd}[ampersand replacement = \&]
         {\cdots\to F_2\to F_1\to F_0}\ar[d,"{\Hom_{\mZ[G]}(-,M)}"]\\
