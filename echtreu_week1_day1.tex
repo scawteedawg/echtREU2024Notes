@@ -65,7 +65,7 @@ Let's define a few things.
 \subsection{Spectra}
 
 \begin{definition}{Spectrum}{}
-    A {spectrum}\index{spectrum}\footnote{What we describe here is sometimes referred to as a prespectrum. Some people require a spectrum to have the structure maps as $X_n\to \Omega X_{n+1}$ and homeomorphisms.} $X$ is a collection of pointed spaces $$\sets{X_0,X_1,X_2,\dots} = \sets{X_n}_{n\in \mN}$$ together with structure maps $$\Sigma X_n\to X_{n+1}.$$
+    A \defindex{spectrum}\footnote{What we describe here is sometimes referred to as a prespectrum. Some people require a spectrum to have the structure maps as $X_n\to \Omega X_{n+1}$ and homeomorphisms.} $X$ is a collection of pointed spaces $$\sets{X_0,X_1,X_2,\dots} = \sets{X_n}_{n\in \mN}$$ together with structure maps $$\Sigma X_n\to X_{n+1}.$$
 \end{definition}
 \begin{example}{}{}
     \begin{enumerate}
@@ -94,7 +94,7 @@ Let's define a few things.
 
 ``Why were spectra invented?'' you may ask. One answer comes in the form of Brown's representability theorem. To understand this, we need a few definitions. 
 \begin{definition}{}{}
-    A generalized homology theory $E$\index{generalized homology} is a functor $$E:\mathsf{Spaces}\to \mathsf{GradedAbGrps}$$ with the properties 
+    A \defindex{generalized homology} theory $E$ is a functor $$E:\mathsf{Spaces}\to \mathsf{GradedAbGrps}$$ with the properties 
     \begin{itemize}
         \item Homotopy: Homotopic spaces have the same homology.
         \item Exactness: Exact sequence in homology from a cofiber sequence. 
@@ -144,7 +144,7 @@ First, let's talk about commutative \emph{(order of multiplication doesn't matte
 \end{example}
 \subsubsection{Modules}
 \begin{definition}{Module}
-    A {module} $M$ over a commutative ring $R$ is an abelian group $M$ together with a scaling map $$R\oby M\to M$$ $$r\oby m\mapsto r\cdot m.$$
+    A \defindex{module} $M$ over a commutative ring $R$ is an abelian group $M$ together with a scaling map $$R\oby M\to M$$ $$r\oby m\mapsto r\cdot m.$$
 \end{definition}
 \begin{example}{}{}
     A vector space $V$ over the ring $\mR$ (or any field $\mF$) is the same thing as an $\mR$-module. 
@@ -154,7 +154,7 @@ First, let's talk about commutative \emph{(order of multiplication doesn't matte
 \end{example}
 \subsubsection{Exact Sequences}
 \begin{definition}{Short Exact Sequence}{}
-    A short exact sequence is $$0\to M'\xr{f}M\xr{g}M''\to 0,$$ such that $$\ker(\text{each map}) = \Im(\text{previous map}).$$ For specificity, we need 
+    A \defindex{short exact sequence} is $$0\to M'\xr{f}M\xr{g}M''\to 0,$$ such that $$\ker(\text{each map}) = \Im(\text{previous map}).$$ For specificity, we need 
     \begin{enumerate}[i.]
         \item $f$ is injective
         \item $g$ is surjectve
@@ -178,6 +178,6 @@ First, let's talk about commutative \emph{(order of multiplication doesn't matte
 Oftentimes, we are interested in some module $M$, and we know that it fits into a short exact sequence $$0\to M'\to M\to M''\to 0$$ where $M',M''$ are known. Determining $M$ given $M'$ and $M''$ is called an extension problem.
 
 \begin{definition}{$p$-adics}{}
-    Another ring of interest is the $p$-adic integers $\mZ_p$ also denoted $\mZ_p^\wedge$ where $\wedge$ means completed. Another way to write this is \begin{align*}\mZ_p = \mZ_p^\wedge &= \varprojlim \mZ/p^k\\ &= \varprojlim(\cdots \to \mZ/p^3\to \mZ/p^2\to\mZ/p\to 0)\\ & = \sets{(a_1,a_2,\dots)\mid a_i \in \mZ/p^i, \quad a_{i+1}\equiv a_i \mod p^i}.\end{align*}
+    Another ring of interest is the \defindex{$p$-adic integers $\mZ_p$} also denoted $\mZ_p^\wedge$ where $\wedge$ means completed. Another way to write this is \begin{align*}\mZ_p = \mZ_p^\wedge &= \varprojlim \mZ/p^k\\ &= \varprojlim(\cdots \to \mZ/p^3\to \mZ/p^2\to\mZ/p\to 0)\\ & = \sets{(a_1,a_2,\dots)\mid a_i \in \mZ/p^i, \quad a_{i+1}\equiv a_i \mod p^i}.\end{align*}
 \end{definition}
 

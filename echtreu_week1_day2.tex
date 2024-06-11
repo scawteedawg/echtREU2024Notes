@@ -51,7 +51,7 @@ We aren't trying to give homework! This is your job! There is no need to work ou
         \end{multicols*}
     \end{example}
     \begin{definition}{Eilenberg MacLane spaces}{}
-        For any Abelian group $G$ and $n\geq 0$ there exists a space $X$ which is considered $K(G,n)$ such that $$\pi_k(X) =\begin{cases}
+        For any Abelian group $G$ and $n\geq 0$ there exists a space $X$ which is considered $K(G,n)$, or an \defindex{Eilenberg MacLane space}, such that $$\pi_k(X) =\begin{cases}
             G & k = n\\
             0 & \text{else}.
         \end{cases}$$
@@ -60,7 +60,7 @@ We aren't trying to give homework! This is your job! There is no need to work ou
     \item Homotopy Groups of a spectrum $E$
     $$\pi_{n+r}E_n\xr{\Sigma}\pi_{n+1+r}E_{n+1}\xr{\alpha_n}\pi_{n+1+r}E_{n+1}.$$ On the left, the codimension (difference in the index) is $r$, and that matches with the group on the right! The codimension is also $r$ there. The $r$th stable group should hopefully convince you at the very least that there is something to the idea that if we did this forever, the homotopy group would ``stabilize'' once $n$ gets big enough!
 
-    \begin{definition}{Homotopy groups of a spectrum}{}
+    \begin{definition}{\defindex{Homotopy groups of a spectrum}}{}
         Let $E$ be a spectrum. The $r$th homotopy group of $E$ is defined to be:
         $$\pi_r E:=\underset{n\to\infty}{\colim}~\pi_{n+r}E_n.$$
     \end{definition}
@@ -68,7 +68,7 @@ We aren't trying to give homework! This is your job! There is no need to work ou
     \item Maps between spectra. 
     
     \begin{definition}{Maps of spectra, version 1}{}
-        Let $E, F$ be two spectra. A {map between spectra} $f:E\to F$ is a collection of maps $f_n:E_n\to F_n$ such that these $f_n$ are compatible with the structure maps ($\eps_n$ for $E$ and $\phi_n$ for $F$), i.e. for each $n$: 
+        Let $E, F$ be two spectra. A \defindex{map between spectra} $f:E\to F$ is a collection of maps $f_n:E_n\to F_n$ such that these $f_n$ are compatible with the structure maps ($\eps_n$ for $E$ and $\phi_n$ for $F$), i.e. for each $n$: 
         \begin{center}
           \begin{tikzcd}[ampersand replacement = \&]
             \Sigma E_{n}\ar[r,"\eps_n"]\ar[d,"\Sigma f_n"']\ar[dr,phantom,"\circlearrowleft"]\& E_{n+1}\ar[d,"f_{n+1}"]\\
@@ -100,9 +100,9 @@ We aren't trying to give homework! This is your job! There is no need to work ou
     \item Homology and cohomology. Let $E,X$ be spectra. 
     
     \begin{definition}{Homology and Cohomology}{}
-        The $E$th cohomology of $X$ in degree $r$ is $$E^r(X):=[X,E]_{-r},$$ maps of spectra $X\to E$ which lower degree by $r$. 
+        The $E$-cohomology of $X$ in degree $r$ is $$E^r(X):=[X,E]_{-r},$$ maps of spectra $X\to E$ which lower degree by $r$. 
     
-        The $E$th homology of $X$ in degree $r$ is $$E_r(X)=[\mS,E\wedge X]_r = \pi_r(E\wedge X).$$
+        The $E$-homology of $X$ in degree $r$ is $$E_r(X)=[\mS,E\wedge X]_r = \pi_r(E\wedge X).$$
     \end{definition}
     When I say coefficients of a spectrum $E$, what I really mean is $E_r(\ast) = \pi_r E = E^{-r}(\ast)$. This is usually written $E_\ast$ to collect all $r$ into one neat little package. By this we mean $$E_\ast = \bigoplus_{r\in \mZ} E_r(\ast).$$
     \item Given a map of spectra $f:X\to Y$, define $$(Y\cup_f CX)_n:=Y_n\cup_{f_n}(I_+\wedge X_n).$$ This gives us a long cofiber sequence of spectra $$\cdots\to\Omega X\to \Omega Y\to\Omega \text{Cof } fX\xr{f}Y\xr{i}\underbrace{Y\cup_f CX}_{\text{Cof }f}\to \underbrace{(Y\cup_f CX)\cup_i CY}_{\Sigma X}\to \Sigma Y\to \cdots.$$ Here $\Omega(-) = \mathsf{Map}(\mS^1,-)$, the loops. And in spectra, $\Omega$ is something like $\Sigma\inv$. 
@@ -115,7 +115,7 @@ Here, we have been using a lot from the blue book: \cite[pg. 123, \S 3]{adams197
 
 \subsubsection{Homological Algebra}
 \begin{definition}{Chain complex}{}
-    A {chain complex} is $$\cdots \xr{d_{n+2}}C_{n+1}C_{n+1}\xr{d_{n+1}}C_{n}\xr{d_n}C_{n-1}\xr{d_{n-1}}\cdots$$ such that 
+    A \defindex{chain complex} is $$\cdots \xr{d_{n+2}}C_{n+1}C_{n+1}\xr{d_{n+1}}C_{n}\xr{d_n}C_{n-1}\xr{d_{n-1}}\cdots$$ such that 
     \begin{itemize}
         \item[-] For all $i$, $d_{i-1}d_i = 0$. Another way people write this is $d\circ d =0$ or $d^2 =0$.  
     \end{itemize}
@@ -131,7 +131,7 @@ Here, we have been using a lot from the blue book: \cite[pg. 123, \S 3]{adams197
 \end{example}
 
 \begin{definition}{Homology of a chain complex}{}
-    The homology of a chain complex $C = (C_\bullet, d_\bullet)$ is defined to be $$H_n(C):= \frac{\ker d_n}{\Im d_{n+1}}, \qquad H_\ast(C):=\bigoplus_{n\in \mZ}H_n(C).$$
+    The \defindex{homology of a chain complex} $C = (C_\bullet, d_\bullet)$ is defined to be $$H_n(C):= \frac{\ker d_n}{\Im d_{n+1}}, \qquad H_\ast(C):=\bigoplus_{n\in \mZ}H_n(C).$$
 \end{definition}
 
 \begin{example}{Example above continued}{}
@@ -149,7 +149,7 @@ Here, we have been using a lot from the blue book: \cite[pg. 123, \S 3]{adams197
     \end{cases}.$$
 \end{example}
 \begin{definition}{Map of Chain complexes}{}
-    A map of chain complexes $$f:C\to D$$ is
+    A \defindex{map of chain complexes} $$f:C\to D$$ is
     \begin{itemize}
         \item A collection of maps $f_i:C_i\to D_i$
     \end{itemize}
@@ -176,7 +176,7 @@ Here, we have been using a lot from the blue book: \cite[pg. 123, \S 3]{adams197
 \end{proof}
 
 \begin{definition}{Chain homotopy}{}
-    Suppose $f,g:C\to D$ are chain maps. A {homotopy} $h$ from $f$ to $g$ is a collection of maps $h_i:C_i\to D_{i+1}$ such that $$f_i - g_i = d h_i + h_{i-1} d.$$
+    Suppose $f,g:C\to D$ are chain maps. A \defindex{chain homotopy} $h$ from $f$ to $g$ is a collection of maps $h_i:C_i\to D_{i+1}$ such that $$f_i - g_i = d h_i + h_{i-1} d.$$
 \end{definition}
 
 \begin{fact}{}{}
@@ -188,7 +188,7 @@ Here, we have been using a lot from the blue book: \cite[pg. 123, \S 3]{adams197
 Hey, Jack! What about cohomology?
 
 \begin{remark}{}{}
-    Sometimes we will work instead of with chain complexes, we'll work with {cochain complexes}. These are the same as chain complexes except the differentials \emph{INCREASE} degree. Let's compare
+    Sometimes we will work instead of with chain complexes, we'll work with \defindex{cochain complexes}. These are the same as chain complexes except the differentials \emph{INCREASE} degree. Let's compare
     \begin{align*}
         \text{Chain Complex }& \cdots \to C_{n+1}\xr{d_{n+1}}C_n\xr{d_n}C_{n-1}\xr{d_{n-1}}\cdots\\
         \text{Cochain Complex }& \cdots \to C^{n-1}\xr{d^{n-1}}C^n\xr{d^n}C^{n+1}\xr{d^{n+1}}\cdots\\
