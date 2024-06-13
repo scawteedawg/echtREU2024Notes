@@ -1,3 +1,13 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{Ada74}
+
+\bibitem[Ada74]{adams1974stable}
+J.~Frank Adams.
+\newblock {\em Stable Homotopy and Generalised Homology}.
+\newblock University of Chicago Press, 1974.
+
+\bibitem[Hat02]{Hatcher}
+Allen Hatcher.
+\newblock {\em Algebraic Topology}.
+\newblock Cambridge University Press, Cambridge, UK, 2002.
 
 \end{thebibliography}
