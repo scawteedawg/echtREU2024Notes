@@ -67,4 +67,32 @@ Therefore, our $E_2^{s,t}$ group we were looking for is coming from $$H^s(C_2,\p
       \pi_{1}(E\wedge \mS)\ar[r,"2"]\& \pi_1(E\wedge \mS)\ar[r]\& \pi_1(E\wedge \mS)\ar[dll,out = 225,in = 45]\\ 
       \pi_{0}(E\wedge \mS)\ar[r,"2"]\& \pi_0(E\wedge \mS)
     \end{tikzcd}
-  \end{center}
+\end{center}
+
+Here, we need to find $H^s(C_2;\pi_2(E\wedge V(0)))$ and put this into an Adams grading. This means the $x$-axis doesn't represent $t$ but rather represents $t-s$.  When you do this computation, we get the following picture for the $E_2$ page. 
+\DeclareSseqGroup\tenamwednesday{}{
+    \foreach\k in {0,4}{
+        \foreach \j in {0,...,6}{
+            \class[fill = white]({\k+\j},\j)
+        }
+    }
+    \foreach\k in {2,6}{
+        \foreach \j in {0,...,6}{
+            \class[circlen=2,wongpink,fill = wongpink]({\k+\j},\j)
+        }
+    }
+    }
+
+\begin{sseqdata}[name = EwedgeV0,Adams grading]
+        \tenamwednesday(0,0)
+        \tenamwednesday(-8,0)
+        \tenamwednesday(8,0)
+\end{sseqdata}
+\begin{center}
+    \printpage[name=EwedgeV0,x range = {0}{16}, y range = {0}{6},xscale =.75,grid = chess]
+\end{center}
+The pink dot represents the module $\mZ/2\sets{u}$ and the white dot represents the module $\mZ/2\sets{1}$. The map $E\xr{\by 2}E\to E\wedge V(0)$ as maps of spectra induces a long exact sequence in $\pi_\ast$ which in this case is a short exact sequence! $$0\to \pi_{2t}E\to \pi_{2t}E\to \pi_{2t}E\wedge V(0)\to 0$$ $$0\to \pi_{\ast}E\to \pi_{\ast}E\to \pi_{\ast}E\wedge V(0)\to 0.$$
+\begin{fact}{}{}
+    A short exact sequence of modules $$0\to M'\to M\to M''\to 0$$ induces a long exact sequence in group cohomology, $$\cdots \to H^{s-1}(G;M'')\to H^s(G;M')\to H^s(G;M)\to H^s(G;M'')\to H^{s+1}(G;M')\to \cdots.$$
+\end{fact}
+Now, since we have the ses in modules $$0\to \pi_\ast(E)\to\pi_\ast(E)\to\pi_\ast(E\wedge V(0))\to 0,$$ we get the LES in group cohomology $$\cdots \to H^s(G;\pi_\ast E)\to \underbrace{H^s(G;\pi_\ast E)}_{E_2^{s,\ast}(E)}\to \underbrace{H^s(G,\pi_\ast E\wedge V(0))}_{E_2^{s,\ast}(E\wedge V(0))}\to \textcolor{wongpink}{\underbrace{H^{s+1}(G;\pi_{\ast}E)}_{E_2^{s+1,\ast}(E)}}\to \cdots.$$ Since the elements are inside of our spectral sequences, we actually get maps between spectral sequences! This now tells us information about our differentials between the different spectral sequences!
