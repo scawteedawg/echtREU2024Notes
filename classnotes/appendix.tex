@@ -1,4 +1,6 @@
-\appendix
+\chapter{Appendix}
+\newpage
+\section{Appendix A}
 \newcommand{\scottycomment}[1]{\footnote{#1}}
 \begin{definition}{pullbacks}{pullback}
     Let $\calC$ be a category which contains the diagram \begin{center}
@@ -79,5 +81,26 @@
 \end{definition}
 
 \begin{definition}{(Homotopy) Fixed points}{}
-    Let $G\acts X$ where $X$ is a topological space. The \defindex{fixed points} of $X$ are 
+    Let $G\acts X$ where $X$ is a topological space. The \defindex{fixed points} of $X$ are, all equivalently, \begin{align*}
+      X^G&:=\sets{x\in X\mid gx = x~\forall g\in G}\\
+      &:=G\mathsf{Maps}(\ast,X)\\
+      &:=\mathsf{Maps}(\ast,X)^G = \sets{f:\ast\to X\mid gf(g\inv \ast) = f(\ast)~\forall g\in G}.
+    \end{align*}
+    The \textbf{homotopy fixed points}\index{fixed points!homotopy} of the topological space $X$ are, all equivalently, 
+    \begin{align*}
+      X^{hG}&:=G\mathsf{Maps}(EG,X)\\
+      &:=\mathsf{Maps}(EG,X)^G = \sets{f:EG\to X\mid ~gf(g\inv e) = f(e)\forall g\in G}\\
+      & = \mathsf{Maps}(BG,X).
+    \end{align*}
+    Here $BG$ is the \defindex{classifying space} for $G$ and $EG$ is the total space of the classifying space. Key properties of $EG$ are that $EG\simeq \ast$, i.e. $EG$ is contractible, and $EG$ has a $G$ action which is free on $EG$. $BG$ is defined to be the quotient space $$BG:=EG/G = \frac{EG}{\sim},\quad e\sim e'\iff \exists g\in G\text{ such that }e = e'\cdot g.$$ Here are some instances of $BG$ and $EG$. 
+    \begin{center}
+      \begin{tabular}{c|c|c}
+        $G$ & $EG$ & $BG$\\\hline
+        $\sets{e}$ & $\ast$ & $\ast$ \\ 
+        $C_2$  & $S^{\infty}\subset \mR^{\oplus \infty}$ & $\mRP^\infty$ \\ 
+        $\mZ$ & $\mR$ & $S^1$\\
+        $S^1$ & $S^\infty \subset \mC^{\oplus \infty}$ & $\mCP^\infty$\\
+        $\mathsf{SU}(2)$ & $S^\infty\subset\mH^{\oplus \infty}$ & $\mathbb{HP}^\infty$\\
+      \end{tabular}
+    \end{center}
 \end{definition}

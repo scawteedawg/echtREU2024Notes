@@ -98,3 +98,54 @@ The pink dot represents the module $\mZ/2\sets{u}$ and the white dot represents 
     A short exact sequence of modules $$0\to M'\to M\to M''\to 0$$ induces a long exact sequence in group cohomology, $$\cdots \to H^{s-1}(G;M'')\to H^s(G;M')\to H^s(G;M)\to H^s(G;M'')\to H^{s+1}(G;M')\to \cdots.$$
 \end{fact}
 Now, since we have the ses in modules $$0\to \pi_\ast(E)\to\pi_\ast(E)\to\pi_\ast(E\wedge V(0))\to 0,$$ we get the LES in group cohomology $$\cdots \to H^s(G;\pi_\ast E)\to \underbrace{H^s(G;\pi_\ast E)}_{E_2^{s,\ast}(E)}\to \underbrace{H^s(G,\pi_\ast E\wedge V(0))}_{E_2^{s,\ast}(E\wedge V(0))}\to \textcolor{wongpink}{\underbrace{H^{s+1}(G;\pi_{\ast}E)}_{E_2^{s+1,\ast}(E)}}\to \cdots.$$ Since the elements are inside of our spectral sequences, we actually get maps between spectral sequences! This now tells us information about our differentials between the different spectral sequences!
+
+\newpage
+\subsection{Lecture 2}
+
+Again, we'll use this spectral sequence
+\begin{center}
+    \printpage[name=EwedgeV0,x range = {0}{16}, y range = {0}{6},xscale =.75,grid = chess]
+\end{center}
+and the maps 
+$$\cdots \to H^s(G;\pi_\ast E)\to \underbrace{H^s(G;\pi_\ast E)}_{E_2^{s,\ast}(E)}\to \underbrace{H^s(G,\pi_\ast E\wedge V(0))}_{E_2^{s,\ast}(E\wedge V(0))}\to \textcolor{wongpink}{\underbrace{H^{s+1}(G;\pi_{\ast}E)}_{E_2^{s+1,\ast}(E)}}\to \cdots.$$
+
+From this les in cohomology, we can see that the spectral sequences associated to each piece converge at $E_\infty$ to the long exact sequence $$\cdots \to \pi_{t-s}E^{hG}\to \pi_{t-s}E^{hG}\to \pi_{t-s}E^{hG}\wedge V(0)\to \pi_{t-s-1}E^{hG}\to \cdots.$$
+
+The question which started out at the beginning of the lecture was (effectively) this: 
+\begin{question}{}{}
+    What is a morphism of spectral sequences? If we have a LES in cohomology which induces a map for spectral sequences, how can we say this generally?
+\end{question}
+
+\begin{remark}{Method 1}
+    Let's look at the LES sequence, 
+    \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        \overset{0}{\pi_{6}E^{hC_2}}\ar[r,"2"]\& \overset{0}{\pi_{6}E^{hC_2}}\ar[r]\& \pi_{6}E^{hC_2}\wedge V(0)\ar[dll,out = 225,in = 45]\\  
+        \overset{0}{\pi_{5}E^{hC_2}}\ar[r,"2"]\& \overset{0}{\pi_{5}E^{hC_2}}\ar[r]\& \pi_{5}E^{hC_2}\wedge V(0)\ar[dll,out = 225,in = 45]\\ 
+        \overset{\mZ}{\pi_{4}E^{hC_2}}\ar[r,"2"]\&\overset{\mZ}{\pi_{4}E^{hC_2}}\ar[r]\&\pi_{4}E^{hC_2}\wedge V(0)\ar[dll,out = 225,in = 45]\\ 
+        \pi_{3}E^{hC_2}\ar[r]\& \cdots
+      \end{tikzcd}.
+    \end{center}
+    This means that $\pi_6(E^{hC_2}\wedge V(0)) = 0$ and $\pi_5(E^{hC_2}\wedge V(0))=0.$
+\end{remark}
+
+\begin{fact}{}{}
+    If we're given an exact sequence $$A\xr{f}B\to C\to D\xr{g}E,$$ where these are $\mZ/2$-modules (i.e. $\mZ/2$ vector spaces), then $C\cong \coker f\oplus \ker g$. 
+\end{fact}
+
+\begin{theorem}{}{}
+    Let $G$ be a finite group. If $E^{hG}$ satisfies the property that there is a number $P$, called the period, such that for any $n$ $$\pi_{n+P}(E^{hG}) = \pi_{n}(E^{hG}),$$ then if $M$ is a finite complex\footnote{suspension spectrum of a finite CW complex is an instance of this} $\pi_\ast(E^{hF}\wedge M)$ satisfies the same periodic property with period $p\leq P$ and this period is a factor of this number. 
+\end{theorem}
+This should convince us that our result is going to be something less than or equal to 8-periodic since $E^{hC_2}$ is 8-periodic. 
+ 
+
+\begin{remark}{Method 2 for calculating spectral sequences}{}
+    The second method goes as follows. 
+    \begin{center}
+          \begin{tikzcd}[ampersand replacement = \&]
+            E_3^{s,t}(E^{hC_2})\ar[r,"f"]\ar[d,"d_3"']\ar[dr,phantom,"\circlearrowleft"]\& E_3^{s,t}(E^{hC_2}\wedge V(0))\ar[d,"d_3"]\\
+            E_3^{s+3,t+2}(E^{hC_2})\ar[r,"f"']\& E_3^{s+3,t+2}(E^{hC_2}\wedge V(0))
+          \end{tikzcd}
+    \end{center}
+    This is commutative, so in other words, if $x$ is in the top left corner, we require $$d_3(f(x)) = f(d_3(x))$$
+\end{remark}
