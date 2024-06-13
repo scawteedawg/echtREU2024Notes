@@ -80,7 +80,7 @@ Here, we need to find $H^s(C_2;\pi_2(E\wedge V(0)))$ and put this into an Adams 
     }
     \foreach\k in {2,6}{
         \foreach \j in {0,...,6}{
-            \class[circlen=2,wongpink,fill = wongpink]({\k+\j},\j)
+            \class[wongpink,fill = wongpink]({\k+\j},\j)
         }
     }
     }
@@ -147,5 +147,139 @@ This should convince us that our result is going to be something less than or eq
             E_3^{s+3,t+2}(E^{hC_2})\ar[r,"f"']\& E_3^{s+3,t+2}(E^{hC_2}\wedge V(0))
           \end{tikzcd}
     \end{center}
-    This is commutative, so in other words, if $x$ is in the top left corner, we require $$d_3(f(x)) = f(d_3(x))$$
+    This is commutative, so in other words, if $x$ is in the top left corner, we require $$d_3(f(x)) = f(d_3(x)).$$ This allows us to import information from one spectral sequence to the other and vice versa!
 \end{remark}
+
+\newpage
+\section{After Hours}
+\begin{definition}{\defindex{Morphism of spectral sequences}}{}
+    A morphism of spectral sequences $$(E_\bullet^{\ast,\ast},d_\bullet)\xr{f}(\tilde{E}_\bullet^{\ast,\ast},\tilde{d}_\bullet)$$ is a collection of maps
+    \begin{itemize}
+        \item $E_k^{s,t}\xr{f_k^{s,t}}\tilde{E}_k^{s,t}$
+    \end{itemize}
+    such that 
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item[-]   \begin{tikzcd}[ampersand replacement = \&]
+                E_k^{s,t}\ar[r,"f_k^{s,t}"]\ar[d,"d_k"']\& \tilde{E}_k^{s,t}\ar[d,"\tilde{d}_k"]\\
+                E_k^{s+k,t-k+1}\ar[r,"f_{k}^{s+k,t-k+1}"]\& \tilde{E}_k^{s+k,t-k+1}
+              \end{tikzcd}, and \columnbreak
+            \item[-] $f_{k+1}^{s,t} = H_\ast(f_k^{s,t})$.
+        \end{itemize}
+    \end{multicols}
+\end{definition}
+Now, let's do something concrete. 
+
+\begin{center}
+    $E_2(E)$ \hspace{2in} $E_2(E\wedge V(0))$
+
+    \printpage[name = HFPSSd2,page = 2,x range = {-4}{4}, y range = {0}{6},xscale = .75,grid = chess,yscale = .5] 
+    \printpage[name=EwedgeV0,x range = {-4}{4}, y range = {0}{6},xscale =.75,grid = chess,yscale = .5,page = 2]
+\end{center}
+Here, we'd like to see what is going on where $(t-s,s) = (3,3)$, and this gives a map 
+\begin{align*}
+    \square&\xr{f}\bullet\\
+    \mZ&\xr{?}\mZ/2
+\end{align*}
+Now, we can look at the $E_2(E)$ corresponding page, and we see an exact sequence \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        H^0(C_2;\mZ)\ar[r,"2"]\& H^0(C_2;\mZ)\ar[r]\& H^0(C_2;\mZ)\ar[r,"0"]\&0\\[-20pt]
+        \mZ\ar[r,"2"]\& \mZ\ar[r]\& \mZ/2.
+      \end{tikzcd}
+\end{center}
+So here, when we map using $d_3$, we get from the LES in cohomlogy, we get $d_3:\mZ/2\to \mZ/2$ is the identity. 
+
+\begin{center}
+    \includegraphics[width = 4in]{screenshotjune13.png}
+\end{center}
+
+\begin{proposition}{}{}
+    We have a tower of nontrivial differentials as shown in the image above. 
+\end{proposition}
+\begin{proof}
+    Either do direct calculation or use the $\pi_\ast \mS$-module structure to figure it out. 
+\end{proof}
+
+\begin{sseqdata}[name = ewedgev0calculation,Adams grading]
+    \tenamwednesday(0,0)
+    \tenamwednesday(-8,0)
+    \tenamwednesday(8,0)
+    \class(-1,7)
+    \class(0,8)
+    \class(1,9)
+    \d3(0,4)
+    \d3(1,5)
+    \d3(2,6)
+    \foreach \m in {0,...,3}{
+        \d3 ({4+\m},\m)
+        \d3 ({-4+\m},\m)
+        \d3 ({8+\m},\m)
+    }
+\end{sseqdata}
+\begin{center}
+    \printpage[name = ewedgev0calculation,x range = {-5}{5}, y range = {0}{6},page = 3,grid = chess]
+
+    \printpage[name = ewedgev0calculation,x range = {-5}{5}, y range = {0}{6},page = 4,grid = chess]
+\end{center}
+We still don't know a lot about the pink diagonal which starts at $(-2,0)$. 
+
+We've exhausted the data of $E\to E\wedge V(0)$. 
+\newpage
+\begin{question}{}{}
+    How can we proceed?
+\end{question}
+\begin{proof}[Options]$~$
+    \begin{enumerate}
+        \item We can use knowledge of the final answer (which we can find from the long exact sequence in $\pi_\ast(0)$ associated to the cofiber sequence $E\xr{2}E\to E\wedge V(0).$) This is a good bet!
+        \item We did all of this work using $E\to E\wedge V(0)$ to get a lot of information. Why don't we also try using $E\wedge V(0)\to \Sigma E$? This is because of extending the cofiber sequence!\footnote{The Puppe sequence is a sequence of spaces that you arrive at from taking consecutive cofibers. It's slick!} Note that $\pi_t \Sigma E = \pi_{t\pm 1}E$. This is a good fact to have!
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}{}{}
+    Suppose there exists a spectral sequence with $E_3$ page like 
+    \begin{sseqdata}[name = afterhoursw1d4sseq1, Adams grading]
+        \foreach \i in {0,...,6}{
+            \class[fill= white](2+\i,\i)
+            \class[fill = white](-2+\i,\i)
+        }
+        \d["?"]3(2,0)
+        \d["?"]3(3,1)
+    \end{sseqdata}
+    \begin{center}
+        \printpage[name = afterhoursw1d4sseq1,page = 3,grid = chess]
+    \end{center}
+    If we know that $\pi_2(E) =0$, then we can deduce that this $d_3$ differential must exist! Because if it didn't exist, then we wouldn't get that $\pi_2 = 0$. 
+\end{remark}
+
+\newpage
+\begin{question}{Why is $\pi_\ast \mS$ a ring?}{}
+    \textbf{Concrete answer:} How do we multiply? Suppose $\alpha\in \pi_k\mS$ and $\beta\in \pi_\ell \mS$. We can make a new element $\alpha\beta \in \pi_{k+\ell}\mS$. 
+
+    We can represent $$\alpha = [S^{k+i}\xr{a}S^i],\quad \beta = [S^{\ell+j}\xr{b}S^{j}].$$ We can define $$\alpha\beta:=\bracks{S^{k+\ell + i+ j}\cong S^{k+i}\wedge S^{\ell + j}\xr{a\wedge b}S^i\wedge S^j\cong S^{i+j}}\in \pi_{k+\ell}\mS.$$ Furthermore, $\alpha\beta = (-1)^{\abs{\alpha}+\abs{\beta}}\beta\alpha$. This is called ``graded commutative.''
+
+    \bigskip
+    \textbf{Formal Answer:} $\mS$ is a \defindex{ring spectrum}. A ring spectrum $R$ is a spectrum with some extra data. This extra data is 
+    \begin{itemize}
+        \item the unit map: $\mS\xr{\eta} R$ 
+        \item the multiplication map: $R\wedge R\xr{\mu}R$
+    \end{itemize}
+    such that several diagrams commute. 
+
+    \medskip
+    \begin{claim}{}{}
+        If $R$ is a ring spectrum, then $\pi_\ast(R)$ is a ring. 
+    \end{claim}
+    \begin{proof}
+        $\pi_k R$ = homotopy classes of maps of spectra from $\mS^k:=\Sigma^\infty S^k$. Now, if we have $\alpha = [S^k\xr[a]R]\in \pi_k R$, $\beta = [S^\ell\xr{b}R]\in \pi_\ell R$, then we can define $$\alpha\beta = \bracks{S^{k+\ell}\cong S^k\wedge S^\ell\xr{a\wedge b}R\wedge R\xr{\mu}R}\in \pi_{k+\ell}R. $$
+    \end{proof}
+\end{question}
+
+\begin{question}{What is $\eta$ from all the spectral sequences we've been looking at?}{}
+    $\eta$ is an element $\eta\in \pi_1\mS$. First, note that $S^3\cong \text{ unit sphere }\subset \mC^2$. Then we have a map \begin{center}
+      \begin{tikzcd}[ampersand replacement = \&]
+        S^3\ar[r]\& \mCP^1\cong S^2 \\ [-20pt]
+        (z,w)\ar[r,mapsto] \& {[z:w]}
+      \end{tikzcd}
+    \end{center}
+\end{question}
+
