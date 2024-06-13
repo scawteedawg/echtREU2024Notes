@@ -5,41 +5,9 @@
 \geometry{margin=1in}
 
 \begin{document}
-    Here is the start of our document. 
 
     Visit \href{https://mirror.math.princeton.edu/pub/CTAN/graphics/pgf/contrib/spectralsequences/manual/spectralsequencesmanual.pdf}{this link} for the documentation.
 
-    \begin{sseqdata}[ name = example1, cohomological Serre grading ]
-        \class(0,0)
-        \class(0,2)
-        \class(3,0)
-        \class(3,2)
-        \d3(0,2)
-    \end{sseqdata}
-    \printpage[name = example1, page = 2] \quad
-    \printpage[name = example1, page = 3] 
-    
-    \printpage[name = example1, page = 4] \quad 
-    \printpage[name = example1,page = 0]
-
-
-    \begin{sseqdata}[name = names, Adams grading,classes = {draw = none}]
-        \class["Scotty"](5,0) 
-        \class["Jack"] (0,2)
-        \class["Irina"] (0,4)
-        \class["Dan"] (4,4)
-        \d4(5,0)
-    \end{sseqdata}
-    \printpage[name =names, page =0]
-    \printpage[name = names, page = 5,background color = blue]
-
-    \begin{sseqpage}[Adams grading, opacity =1, background color = red]
-        \class[red](1,0)
-        \class[green](0,5)
-        \d[blue]5(1,0)
-    \end{sseqpage}
-
-    \newpage
     \noindent Exercise 1 (Harder, try last! Test out your skills with the package, not a real spectral sequence): 
 
     Make the following diagram on your own. (Hint: I'm on page 0, using cohomological Serre grading, and I used a for loop to make my life easier.) What is the $E_4$ page of this spectral sequence? Why does Scotty like the $E_4$ page?
@@ -91,7 +59,8 @@
 
     \newpage
 
-    \noindent Exercise 3
+    \noindent Exercise 3:
+
     What differentials could be supported on this spectral sequence using the Adams grading? Note that the scaling is different between the two axes!
 
     \begin{sseqdata}[name = ex3,Adams grading, yscale = .4]
@@ -130,43 +99,16 @@
     \begin{sseqdata}[name = ex4,Adams grading]
         \tower[blue](3,0)
         \diagonal[red](1,0)
+        \class["2",rectangle] (0,0)
+        \class["Scotty"] (0,1)
+        \class["Z/2"] (0,3)
+        \class[circlen =3] (0,4)
     \end{sseqdata}
     \begin{center}
-        \printpage[name =ex4,x range = {0}{4},y range = {0}{4}]
+        \printpage[name = ex4,x range = {0}{4},y range = {0}{4}]
     \end{center}
 
-    \begin{sseqdata}[name = test,Adams grading]
-        \class(1,0) % first class at (1,0)
-        \class(1,0) % second class at (1,0)
-        \class(0,2) % first class at (0,2)
-        \class(0,2) % second class at (0,2)
-        \d2 (1,0) % draw a d2 differential from (1,0). start at first classes. same command as \d2(1,0,1,1)
-        \d2(1,0,2,2) % draw a d2 differential from (1,0) from second class to second class. 
-    \end{sseqdata}
-    \begin{sseqdata}[name = test2,Adams grading]
-        \class(1,0) % first class at (1,0)
-        \class(1,0) % second class at (1,0)
-        \class(0,2) % first class at (0,2)
-        \class(0,2) % second class at (0,2)
-        \d[red]2 (1,0,1,2) % draw a d2 differential from (1,0). start at first classes. same command as \d2(1,0,1,1)
-        \d[blue]2(1,0,2,1) % draw a d2 differential from (1,0) from second class to second class. 
-    \end{sseqdata}
-    
-    \printpage[name = test,page = 2]\printpage[name = test2,page = 2]
+    \noindent Exercise 5: 
 
-    \DeclareSseqGroup\etatower{}{
-        \class[rectangle](0,0)
-        \foreach \i in {1,...,11}{
-            \class[fill=black](\i,\i)
-            \structline["\eta^\i"](\i-1,\i-1)(\i,\i)
-        }
-    }
-    \begin{sseqdata}[name = HFPSS, Adams grading]
-        \foreach \k in {0,2,4,6}{
-            \etatower({2*\k},0)
-            \etatower(-4,{2*\k})
-        }
-        \d[gray]3(4,0)
-    \end{sseqdata}
-    \printpage[name = HFPSS,x range = {0}{6},y range = {0}{6}, page =4] 4
+    Create a spectral sequence with Adams grading using differentials going from 0 to 3 to make some dots in a pattern that is your first initial. 
 \end{document}

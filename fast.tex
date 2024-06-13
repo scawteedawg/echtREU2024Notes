@@ -1,5 +1,19 @@
 \documentclass{article}
-
+\usepackage{spectralsequences}
 \begin{document}
     I made this file very fast!
+
+    \DeclareSseqGroup\etatowertwo{}{
+    \class[rectangle](0,0)
+    \foreach\i in {1,...,5}{
+        \class[fill = white](\i,\i)
+        \structline(\i-1,\i-1,-1)(\i,\i,-1)
+    }
+}
+\begin{sseqdata}[name = HFPSSd2,x range ={0}{16},y range = {0}{6},xscale = .5]
+    \foreach \k in {0,...,4}{
+        \etatowertwo({4*\k},0)
+    }
+\end{sseqdata}
+\printpage[name = HFPSSd2]
 \end{document}

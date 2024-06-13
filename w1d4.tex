@@ -1,0 +1,70 @@
+\section{Day 4}
+\subsection{Lecture 1}
+
+Yesterday we computed a homotopy fixed point spectral sequence. Suppose that $C_2\acts\calE$ where $\calE$ is a spectrum. 
+
+$$E_2^{s,t} = H^s(C_2;\pi_t \calE)\Rightarrow \pi_{t-s}\calE^{hC_2}.$$
+
+\DeclareSseqGroup\etatowertwo{}{
+    \class[rectangle](0,0)
+    \foreach\i in {1,...,11}{
+        \class[fill = white](\i,\i)
+        \structline(\i-1,\i-1,-1)(\i,\i,-1)
+    }
+}
+\begin{sseqdata}[name = HFPSSd2,x range ={0}{16},y range = {0}{4},xscale = .5,Adams grading]
+    \foreach \k in {-2,...,4}{
+        \etatowertwo({4*\k},0)
+    }
+    \d[wongorange]3 (-4,0)
+    \replacesource[rectangle]
+    \d[wongorange]3(4,0)
+    \replacesource[rectangle]
+    \d[wongorange]3(12,0)
+    \replacesource[rectangle]
+    \foreach \n in {1,...,6}{
+        \d[wongorange]3 ({-4+\n},\n)
+        \d[wongorange]3({4+\n},\n)
+        \d[wongorange]3({12+\n},\n)
+    }
+\end{sseqdata}
+\begin{center}
+    \printpage[name = HFPSSd2]
+
+    \printpage[name = HFPSSd2,page = 4]
+\end{center}
+
+The final $E_\infty$ page is $\pi_\ast E^{hC_2}$. This gives $\pi_\ast E = \mZ[u^{\pm 1}]$ where $\abs{u} =2$. (If this were a polynomial ring where $x$ is a variable, then $u$ would have the same weight the $x^2$ ``part.'')
+
+\begin{question}{}{}
+    How do we compute $\pi_\ast(E^{hC_2}\wedge V(0))$. 
+\end{question}
+There is a spectral sequence $$\underbrace{E_2^{s,t} = H^s(C_2,\pi_t(E\wedge V(0)))}_{\text{Question 1}}\Rightarrow \underbrace{\pi_{t-s}E^{hC_2}\wedge V(0)}_{\text{Question 2}}$$
+
+For Question 1, we have 
+\begin{align*}
+    \mS&\xr{2}\mS\to V(0)\tag{fiber sequence}\\
+    E\wedge \mS&\xr{2}E\wedge \mS \to E\wedge V(0)\tag{fiber sequence}
+\end{align*}
+This induces a long exact sequence in homotopy groups. 
+\begin{center}
+  \begin{tikzcd}[ampersand replacement = \&]
+    \&\cdots\ar[r]\&\pi_{k+1}(E\wedge V(0))\ar[dll,out = 225,in = 45]\\ 
+    \pi_k(E\wedge \mS)\ar[r,"2"]\& \pi_k(E\wedge \mS)\ar[r]\& \pi_k(E\wedge \mS)\ar[dll,out = 225,in = 45]\\ 
+    \pi_{k-1}(E\wedge \mS)\ar[r,"2"]\& \cdots.
+  \end{tikzcd}
+\end{center}
+After following the LES (using our spectral sequence $E_\infty$ page on the the previous page), we get $$\pi_t(E\wedge V(0)) = \begin{cases}
+    \mZ/2 & t\text{ even}\\
+    0 & t\text{ odd}
+\end{cases}.$$
+Therefore, our $E_2^{s,t}$ group we were looking for is coming from $$H^s(C_2,\pi_t(E\wedge V(0))).$$
+
+\begin{center}
+    \begin{tikzcd}[ampersand replacement = \&]
+      \&\cdots\ar[r]\&\pi_{3}(E\wedge V(0))\ar[dll,out = 225,in = 45]\\ 
+      \pi_2(E\wedge \mS)\ar[r,"2","u\mapsto 2u"]\& \pi_2(E\wedge \mS)\ar[r]\& \pi_2(E\wedge \mS)\ar[dll,out = 225,in = 45]\\ 
+      \pi_{1}(E\wedge \mS)\ar[r,"2"]\& \pi_1(E\wedge \mS)\ar[r]\& \pi_1(E\wedge \mS)\ar[dll,out = 225,in = 45]\\ 
+      \pi_{0}(E\wedge \mS)\ar[r,"2"]\& \pi_0(E\wedge \mS)
+    \end{tikzcd}
+  \end{center}

@@ -1,0 +1,190 @@
+\subsection{Exercises}
+These are exercises based on the package $\texttt{spectralsequences}$ by Hood Chatham. See the \href{https://ctan.math.utah.edu/ctan/tex-archive/graphics/pgf/contrib/spectralsequences/manual/spectralsequencesmanual.pdf}{documentation} for an incredible review of what this package can do. 
+\begin{exercise}{(Harder, try last! Test out your skills with the package, not a real spectral sequence)}{} 
+
+    Make the following diagram on your own. (Hint: I'm on page 0, using cohomological Serre grading, and I used a for loop to make my life easier.) What is the $E_4$ page of this spectral sequence? Why does Scotty like the $E_4$ page?
+
+    \begin{sseqdata}[name = Exercise 1, cohomological Serre grading]
+        \foreach \x in {0,...,5}{
+            \foreach \y in {0,...,5}{
+                \class(\x,\y)
+            }
+        }
+        \d0(1,4)
+        \d0(1,1)
+        \d0(0,0)
+        \d1(2,5)
+        \d1(4,5)
+        \d1(4,3)
+        \d2(0,2)
+        \d2(0,4)
+        \d3(0,3)
+        \d3(1,3)
+        \d3(0,5)
+        \class(2,3)
+    \end{sseqdata}
+    \begin{center}
+        \printpage[name = Exercise 1,page = 0]
+    \end{center}
+    % \printpage[name = Exercise 1,page = 6]
+
+    
+\end{exercise}
+
+\begin{exercise}{(Start here!)}{} 
+
+    Make the following diagram on your own! (Hint: I'm on page 0, using Adams grading, and I used some loops plus math to make my life easier)
+
+    \begin{sseqdata}[name = ex2,Adams grading]
+        \foreach \x in {0,...,5}{
+            \foreach \y in {0,...,5}{
+                \class({2*\x},\y)
+            }
+        }
+    \end{sseqdata}
+    \begin{center}
+        \printpage[name = ex2,page = 0]
+    \end{center}
+    Question: What differentials have a chance to be supported here? Remember, we're using Adams grading!
+
+
+    \newpage
+\end{exercise}
+\begin{exercise}{}{}
+
+    What differentials could be supported on this spectral sequence using the Adams grading? Note that the scaling is different between the two axes!
+
+    \begin{sseqdata}[name = ex3,Adams grading, yscale = .4]
+        \foreach \x in {0,...,10}{
+            \foreach \y in {0,...,10}{
+                \class (\x,{2*\y})
+            }
+        }
+    \end{sseqdata}
+    \begin{center}
+        \printpage[name = ex3,page =0]
+    \end{center}
+
+    
+\end{exercise}
+\begin{exercise}{}{}
+    
+    Create this spectral sequence page 0 with Adams grading!
+
+    \DeclareSseqGroup\tower{}{
+        \class (0,0)
+        \foreach \i in {1,...,5}{
+            \class (0,\i)
+            \structline(0,{\i-1},-1)(0,\i,-1)
+        }
+    }
+    \DeclareSseqGroup\diagonal{}{
+        \tower(0,0)
+        \foreach\i in {1,...,5}{
+            \class(\i,\i)
+            \structline(\i-1,\i-1,-1)(\i,\i,-1)
+        }
+    }
+    \begin{sseqdata}[name = ex4,Adams grading]
+        \tower[wonglightblue](3,0)
+        \diagonal[wongred](1,0)
+        \class["2",rectangle] (0,0)
+        \class["Scotty"] (0,1)
+        \class["Z/2"] (0,3)
+        \class[circlen =3] (0,4)
+    \end{sseqdata}
+    \begin{center}
+        \printpage[name = ex4,x range = {0}{4},y range = {0}{4}]
+    \end{center}
+\end{exercise}
+\begin{exercise}{}{}
+    Create a spectral sequence with Adams grading using differentials going from 0 to 3 to make some dots in a pattern that is your first initial. 
+\end{exercise}
+
+\subsection{Solution \TeX}
+\begin{tcolorbox}[title=Exercise 13,colback=black!80!white,coltext=white]
+\begin{verbatim}
+    \begin{sseqdata}[name = Exercise 1, cohomological Serre grading]
+        \foreach \x in {0,...,5}{
+            \foreach \y in {0,...,5}{
+                \class(\x,\y)
+            }
+        }
+        \d0(1,4)
+        \d0(1,1)
+        \d0(0,0)
+        \d1(2,5)
+        \d1(4,5)
+        \d1(4,3)
+        \d2(0,2)
+        \d2(0,4)
+        \d3(0,3)
+        \d3(1,3)
+        \d3(0,5)
+        \class(2,3)
+    \end{sseqdata}
+    \begin{center}
+        \printpage[name = Exercise 1,page = 0]
+    \end{center}
+\end{verbatim}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Exercise 14,colback=black!80!white,coltext=white]
+\begin{verbatim}
+    \begin{sseqdata}[name = ex2,Adams grading]
+        \foreach \x in {0,...,5}{
+            \foreach \y in {0,...,5}{
+                \class({2*\x},\y)
+            }
+        }
+    \end{sseqdata}
+    \begin{center}
+        \printpage[name = ex2,page = 0]
+    \end{center}
+\end{verbatim}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Exercise 15,colback=black!80!white,coltext=white]
+\begin{verbatim}
+    \begin{sseqdata}[name = ex3,Adams grading, yscale = .4]
+        \foreach \x in {0,...,10}{
+            \foreach \y in {0,...,10}{
+                \class (\x,{2*\y})
+            }
+        }
+    \end{sseqdata}
+    \begin{center}
+        \printpage[name = ex3,page =0]
+    \end{center}
+\end{verbatim}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Exercise 16,colback=black!80!white,coltext=white]
+    \begin{verbatim}
+        \DeclareSseqGroup\tower{}{
+            \class (0,0)
+            \foreach \i in {1,...,5}{
+                \class (0,\i)
+                \structline(0,{\i-1},-1)(0,\i,-1)
+            }
+        }
+        \DeclareSseqGroup\diagonal{}{
+            \tower(0,0)
+            \foreach\i in {1,...,5}{
+                \class(\i,\i)
+                \structline(\i-1,\i-1,-1)(\i,\i,-1)
+            }
+        }
+        \begin{sseqdata}[name = ex4,Adams grading]
+            \tower[wonglightblue](3,0) % I created this color
+            \diagonal[wongred](1,0) % I created this color
+            \class["2",rectangle] (0,0)
+            \class["Scotty"] (0,1)
+            \class["Z/2"] (0,3)
+            \class[circlen =3] (0,4)
+        \end{sseqdata}
+        \begin{center}
+            \printpage[name = ex4,x range = {0}{4},y range = {0}{4}]
+        \end{center}
+    \end{verbatim}
+\end{tcolorbox}

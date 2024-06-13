@@ -1,0 +1,49 @@
+\documentclass{article}
+\usepackage{spectralsequences}
+
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\begin{document}
+Hey I'm scotty. 
+
+\begin{sseqdata}[name = ex1, Adams grading]
+    \class(0,0)
+    \class(1,1)
+    \class(2,2)
+\end{sseqdata}
+
+\printpage[name = ex1, page = 0]
+
+\begin{sseqdata}[name = ex2, Adams grading]
+    \foreach \x in {0,...,11}{
+        \foreach \y in {0,...,11}{
+            \class(\x,\y)
+        }
+    }
+    \d["\cdot 2"]1(2,2)
+    \replacetarget["Z/2"]
+    \d3(4,0)
+\end{sseqdata}
+\printpage[name = ex2, x range  = {0}{5}, y range = {0}{5},page = 2]
+
+
+\DeclareSseqGroup{\etatower}{}{
+    \class[rectangle] (0,0)
+    \foreach \i in {1,...,11}{
+        \class[fill =black](\i,\i)
+        \structline["\eta^{\i}"](\i-1,\i-1)(\i,\i) %from i-1 to i
+    }
+}
+\begin{sseqdata}[name = HFPSS, Adams grading,xscale = .5, yscale = .5]
+    \etatower(0,0)
+    \class(0,0)
+    \etatower(4,0)
+    \foreach\i in {1,...,6}{
+        \d3({4+\i},{\i})
+    }
+\end{sseqdata}
+\printpage[name = HFPSS,page =4]
+
+
+\end{document}
