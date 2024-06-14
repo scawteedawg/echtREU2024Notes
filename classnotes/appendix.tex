@@ -1,6 +1,69 @@
 \chapter{Appendix}
 \newpage
 \section{Appendix A}
+\begin{definition}{(Homotopy) Fixed points}{}
+    Let $G\acts X$ where $X$ is a topological space. The \defindex{fixed points} of $X$ are, all equivalently, \begin{align*}
+      X^G&:=\sets{x\in X\mid gx = x~\forall g\in G}\\
+      &:=G\mathsf{Maps}(\ast,X)\\
+      &:=\mathsf{Maps}(\ast,X)^G = \sets{f:\ast\to X\mid gf(g\inv \ast) = f(\ast)~\forall g\in G}.
+    \end{align*}
+    The \textbf{homotopy fixed points}\index{fixed points!homotopy} of the topological space $X$ are, all equivalently, 
+    \begin{align*}
+      X^{hG}&:=G\mathsf{Maps}(EG,X)\\
+      &:=\mathsf{Maps}(EG,X)^G = \sets{f:EG\to X\mid ~gf(g\inv e) = f(e)\forall g\in G}\\
+      & = \mathsf{Maps}(BG,X).
+    \end{align*}
+    Here $BG$ is the \defindex{classifying space} for $G$ and $EG$ is the total space of the classifying space. Key properties of $EG$ are that $EG\simeq \ast$, i.e. $EG$ is contractible, and $EG$ has a $G$ action which is free on $EG$. $BG$ is defined to be the quotient space $$BG:=EG/G = \frac{EG}{\sim},\quad e\sim e'\iff \exists g\in G\text{ such that }e = e'\cdot g.$$ Here are some instances of $BG$ and $EG$. 
+    \begin{center}
+      \begin{tabular}{c|c|c}
+        $G$ & $EG$ & $BG$\\\hline
+        $\sets{e}$ & $\ast$ & $\ast$ \\ 
+        $C_2$  & $S^{\infty}\subset \mR^{\oplus \infty}$ & $\mRP^\infty$ \\ 
+        $\mZ$ & $\mR$ & $S^1$\\
+        $S^1$ & $S^\infty \subset \mC^{\oplus \infty}$ & $\mCP^\infty$\\
+        $\mathsf{SU}(2)$ & $S^\infty\subset\mH^{\oplus \infty}$ & $\mathbb{HP}^\infty$\\
+        $\mathsf{O}(k)$ & $V_k(\infty)\subset (\mR^k)^{\oplus \infty}$ & $\mathsf{Gr}_k(\mR^\infty)$\\
+        $\mathsf{U}(k)$ & $V_k(\infty)\subset (\mC^k)^{\oplus \infty}$ & $\mathsf{Gr}_k(\mC^\infty)$
+      \end{tabular}
+    \end{center}
+    Some letters I wrote down are $\ortho$ the orthogonal group, $\mathsf{U}$, the unitary group and $\mathsf{SU}$ the special unitary group, $V_k$ the Stiefel manifold, $\mathsf{Gr}$ the Grassmannian, and $\mH$ the quaternions which make a 4-dimensional real vector space. 
+\end{definition}
+
+\newpage
+\subsection{Homotopy groups}
+\begin{fact}{\defindex{Homotopy groups of $E^{hC_2}$}}{}
+  \begin{align*}
+    \pi_0(E^{hC_2})&= \mZ & \pi_5(E^{hC_2})&= 0\\
+    \pi_1(E^{hC_2})&= \mZ/2 & \pi_6(E^{hC_2})&=0\\
+    \pi_2(E^{hC_2})&= \mZ/2 & \pi_7(E^{hC_2})&=0\\
+    \pi_3(E^{hC_2})&= 0 & \pi_8(E^{hC_2})&=\mZ\\
+    \pi_4(E^{hC_2})&= \mZ & \text{This }&\text{  is 8 periodic}
+  \end{align*}
+\end{fact}
+\begin{fact}{\defindex{Homotopy groups of $E^{hC_2}\wedge V(0)$}}{}
+  \begin{align*}
+    \pi_0(E^{hC_2}\wedge V(0))&= \mZ/2 & \pi_5(E^{hC_2}\wedge V(0))&= 0\\
+    \pi_1(E^{hC_2}\wedge V(0))&= \mZ/2 & \pi_6(E^{hC_2}\wedge V(0))&=0\\
+    \pi_2(E^{hC_2}\wedge V(0))&= \mZ/4 & \pi_7(E^{hC_2}\wedge V(0))&=0\\
+    \pi_3(E^{hC_2}\wedge V(0))&= \mZ/2 & \pi_8(E^{hC_2}\wedge V(0))&=\mZ/2\\
+    \pi_4(E^{hC_2}\wedge V(0))&= \mZ/2 & \text{This }&\text{  is $\leq$ 8 periodic}
+  \end{align*}
+\end{fact}
+\begin{fact}{A couple of important maps in stable homotopy}{}
+  Here, when I have a finite dimensional vector space $V$, when I write $S^V$ I mean $V^+$, the one-point compactification of $V$.
+  \begin{center}
+    \begin{tabular}{ccc}
+      $2\in \pi_0$ &$\mR^2\setminus \sets{0} \supset \mS^1\xrightarrow[2]{(x,y)\mapsto xy\inv}S^{\mR} = \mS^1$ & $C_2 = \Sigma^{-1}\Sigma^\infty \mRP^2$\\
+      $\eta\in\pi_1$ & $\mC^2\setminus \sets{0} \supset \mS^3\xrightarrow[\eta]{(z_1,z_2)\mapsto z_1z_2\inv}S^{\mC} = \mS^2$ & $C_\eta = \Sigma^{-2}\Sigma^\infty \mCP^2$\\
+      $\nu\in\pi_3$ & $\mH^2\setminus \sets{0} \supset \mS^7\xrightarrow[\nu]{(w_1,w_2)\mapsto w_1w_2\inv}S^{\mH} = \mS^4$ & $C_\nu = \Sigma^{-4}\Sigma^\infty \mHP^2$\\
+      $\sigma\in\pi_7$ & $\mO^2\setminus \sets{0} \supset \mS^{15}\xrightarrow[\sigma]{(\omega_1,\omega_2)\mapsto \omega_1\omega_2\inv}S^{\mO} = \mS^8$ & $C_\sigma = \Sigma^{-8}\Sigma^\infty \mathbb{OP}^2$\\
+    \end{tabular}.
+  \end{center}
+  Alternatively, note that $S^1\cong \mRP^1, S^2\cong \mCP^1, S^4 \cong \mHP^1, S^8\cong \mathbb{OP}^1$ and these maps are all $(a,b)\mapsto [a:b]$ in homogeneous coordinates. 
+\end{fact}
+
+\newpage
+
 \newcommand{\scottycomment}[1]{\footnote{#1}}
 \begin{definition}{pullbacks}{pullback}
     Let $\calC$ be a category which contains the diagram \begin{center}
@@ -78,33 +141,4 @@
             X\ar[from = u,"f"]\ar[r,"i_1"]\& {W}
           \end{tikzcd}
     \end{center}}
-\end{definition}
-
-\newpage
-\begin{definition}{(Homotopy) Fixed points}{}
-    Let $G\acts X$ where $X$ is a topological space. The \defindex{fixed points} of $X$ are, all equivalently, \begin{align*}
-      X^G&:=\sets{x\in X\mid gx = x~\forall g\in G}\\
-      &:=G\mathsf{Maps}(\ast,X)\\
-      &:=\mathsf{Maps}(\ast,X)^G = \sets{f:\ast\to X\mid gf(g\inv \ast) = f(\ast)~\forall g\in G}.
-    \end{align*}
-    The \textbf{homotopy fixed points}\index{fixed points!homotopy} of the topological space $X$ are, all equivalently, 
-    \begin{align*}
-      X^{hG}&:=G\mathsf{Maps}(EG,X)\\
-      &:=\mathsf{Maps}(EG,X)^G = \sets{f:EG\to X\mid ~gf(g\inv e) = f(e)\forall g\in G}\\
-      & = \mathsf{Maps}(BG,X).
-    \end{align*}
-    Here $BG$ is the \defindex{classifying space} for $G$ and $EG$ is the total space of the classifying space. Key properties of $EG$ are that $EG\simeq \ast$, i.e. $EG$ is contractible, and $EG$ has a $G$ action which is free on $EG$. $BG$ is defined to be the quotient space $$BG:=EG/G = \frac{EG}{\sim},\quad e\sim e'\iff \exists g\in G\text{ such that }e = e'\cdot g.$$ Here are some instances of $BG$ and $EG$. 
-    \begin{center}
-      \begin{tabular}{c|c|c}
-        $G$ & $EG$ & $BG$\\\hline
-        $\sets{e}$ & $\ast$ & $\ast$ \\ 
-        $C_2$  & $S^{\infty}\subset \mR^{\oplus \infty}$ & $\mRP^\infty$ \\ 
-        $\mZ$ & $\mR$ & $S^1$\\
-        $S^1$ & $S^\infty \subset \mC^{\oplus \infty}$ & $\mCP^\infty$\\
-        $\mathsf{SU}(2)$ & $S^\infty\subset\mH^{\oplus \infty}$ & $\mathbb{HP}^\infty$\\
-        $\mathsf{O}(k)$ & $V_k(\infty)\subset (\mR^k)^{\oplus \infty}$ & $\mathsf{Gr}_k(\mR^\infty)$\\
-        $\mathsf{U}(k)$ & $V_k(\infty)\subset (\mC^k)^{\oplus \infty}$ & $\mathsf{Gr}_k(\mC^\infty)$
-      \end{tabular}
-    \end{center}
-    Some letters I wrote down are $\ortho$ the orthogonal group, $\mathsf{U}$, the unitary group and $\mathsf{SU}$ the special unitary group, $V_k$ the Stiefel manifold, $\mathsf{Gr}$ the Grassmannian, and $\mH$ the quaternions which make a 4-dimensional real vector space. 
 \end{definition}

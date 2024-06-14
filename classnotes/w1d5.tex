@@ -1,0 +1,88 @@
+\section{Day 5}
+\subsection{Lecture 1}
+
+Today we started on \href{https://miro.com/app/board/uXjVK9G_YTE=/}{this Miro board} where we went over our calculation of the HFPSS for $E^{hC_2}\wedge V(0)$ using method 1. 
+
+The fiber sequence $E^{hC_2}\xr{2}E^{hC_2}\to E^{hC_2}\wedge V(0)$ induces a long exact sequence in homotopy 
+\begin{center}
+  \begin{tikzcd}[ampersand replacement = \&]
+    \cdots \to \underbrace{\pi_8(E^{hC_2})}_{\mZ}\ar[r,"2"]\& \underbrace{\pi_8(E^{hC_2})}_{\mZ}\ar[r]\&\textcolor{wongorange}{\underbrace{\pi_8(E^{hC_2}\wedge V(0))}_{\mZ/2}}\ar[dll, out = -10, in = 170]\\
+    \underbrace{\pi_7(E^{hC_2})}_{0}\ar[r,"2"]\& \underbrace{\pi_7(E^{hC_2})}_{0}\ar[r]\&\textcolor{wongorange}{\underbrace{\pi_7(E^{hC_2}\wedge V(0))}_{0}}\ar[dll, out = -10, in = 170]\\
+    \underbrace{\pi_6(E^{hC_2})}_{0}\ar[r,"2"]\& \underbrace{\pi_6(E^{hC_2})}_{0}\ar[r]\&\textcolor{wongorange}{\underbrace{\pi_6(E^{hC_2}\wedge V(0))}_{0}}\ar[dll, out = -10, in = 170]\\
+    \underbrace{\pi_5(E^{hC_2})}_{0}\ar[r,"2"]\& \underbrace{\pi_5(E^{hC_2})}_{0}\ar[r]\&\textcolor{wongorange}{\underbrace{\pi_5(E^{hC_2}\wedge V(0))}_{0}}\ar[dll, out = -10, in = 170]\\
+    \underbrace{\pi_4(E^{hC_2})}_{\mZ}\ar[r,"2"]\& \underbrace{\pi_4(E^{hC_2})}_{\mZ}\ar[r]\&\textcolor{wongorange}{\underbrace{\pi_4(E^{hC_2}\wedge V(0))}_{\mZ/2}}\ar[dll, out = -10, in = 170]\\
+    \underbrace{\pi_3(E^{hC_2})}_{0}\ar[r,"2"]\& \underbrace{\pi_3(E^{hC_2})}_{0}\ar[r]\&\textcolor{wongorange}{\underbrace{\pi_3(E^{hC_2}\wedge V(0))}_{\mZ/2}}\ar[dll, out = -10, in = 170]\\
+    \underbrace{\pi_2(E^{hC_2})}_{\mZ/2}\ar[r,"2"]\& \underbrace{\pi_2(E^{hC_2})}_{\mZ/2}\ar[r]\&\textcolor{wongorange}{\underbrace{\pi_2(E^{hC_2}\wedge V(0))}_{\mZ/4}}\ar[dll, out = -10, in = 170]\\
+    \underbrace{\pi_1(E^{hC_2})}_{\mZ/2}\ar[r,"2"]\& \underbrace{\pi_1(E^{hC_2})}_{\mZ/2}\ar[r]\&\textcolor{wongorange}{\underbrace{\pi_1(E^{hC_2}\wedge V(0))}_{\mZ/2}}\ar[dll, out = -10, in = 170]\\
+    \underbrace{\pi_0(E^{hC_2})}_{\mZ}\ar[r,"2"]\& \underbrace{\pi_0(E^{hC_2})}_{\mZ}\ar[r]\&\textcolor{wongorange}{\underbrace{\pi_0(E^{hC_2}\wedge V(0))}_{\mZ/2}}\to 0\\
+  \end{tikzcd}
+\end{center}
+In the long exact sequnce above, we figured out all the homotopy groups of $E^{hC_2}\wedge V(0)$. Now, we can look at the spectral sequence to figure out way more of the differentials!
+
+Now, we'll draw the $E_\infty$ page of our spectral sequence for $E^{hC_2}\wedge V(0)$. 
+
+\begin{sseqdata}[name = Einftypicturejune14, Adams grading]
+    \foreach \i in {0,1,2}{
+        \class[red,fill= red]({2+\i},\i)
+        \class[fill = white](\i,\i)
+        \class[red,fill= red]({10+\i},\i)
+        \class[fill = white]({8+\i},\i)
+        \class[red,fill= red]({-6+\i},\i)
+        \class[fill = white]({-8+\i},\i)
+    }
+    \structline(2,0,-1)(2,2,-1)
+    \structline(10,0,-1)(10,2,-1)
+    \structline(-6,0,-1)(-6,2,-1)
+    \foreach \k in {1,2}{
+        \structline({\k-1},{\k-1})(\k,\k)
+        \structline({8+\k-1},{\k-1})({8+\k},\k)
+        \structline({-8+\k-1},{\k-1})({-8+\k},\k)
+        \structline[red]({2+\k-1},{\k-1})(2+\k,\k)
+        \structline[red]({10+\k-1},{\k-1})({10+\k},\k)
+        \structline[red]({-6+\k-1},{\k-1})({-6+\k},\k)
+    }
+\end{sseqdata}
+\printpage[name = Einftypicturejune14, x range = {-8}{12}, y range = {0}{3},grid = chess,xscale = .5]
+\begin{theorem}{}{}
+    The homotopy fixed point spectral sequences for $E^{hG}$ has a vanishing line $E_\infty^{s,t} = 0$ for $s> s_0$ where $s_0$ depends on $E^{hG}$ for $G$ a finite group. 
+
+    \bigskip
+    The homotopy fixed point spectral sequence for $E^{hG}\wedge M$ for a finite complex $M$ has a vanishing line for $s> s_0+\eps$. $\eps$ depends on $M$. 
+\end{theorem}
+Note that $E^{hC_2}$ has a vanishing line at $2$. 
+
+\subsection{Tasks for the afternoon, plan for next week}
+\subsubsection{Afternoon}
+\begin{enumerate}
+    \item Can we prove that $E_4 = E_\infty$ in the homotopy fixed point spectral sequence for $E^{hC_2}\wedge V(0)$. 
+    \begin{enumerate}[a.]
+        \item Using nothing. 
+        \item Using the vanishing line theorem. 
+    \end{enumerate}
+    \item Figure out the answer to the question: How many group extensions are there of $\mF_2$-modules of rank 3. Some examples include 
+    \begin{align*}
+        \cdots & \to (\mZ/2)^3\to \cdots\\
+        \cdots & \to \mZ/4\oplus \mZ/2 \to \cdots\\
+        \cdots & \to \mZ/8\to \cdots
+    \end{align*}
+    \item Each question has 2 parts. First part is finding the group cohomology. The second part is working out the spectral sequence calculation. This needs to be written in detail!
+    \begin{enumerate}[a.]
+        \item (Known, public) Find $H^\ast(C_2;\pi_\ast E_2)\Rightarrow \pi_\ast E_2^{hC_2}$. Here, use that $$\pi_\ast E_2 = \mZ[[u_1]][u^{\pm 1}], \qquad \abs{u}=2, \abs{u_1}=0.$$ The actions of $C_2$ on these elements are $$C_2\cdot u = -u, \qquad C_2\cdot u_1 = u_1.$$ 
+        \item (Known but not public) $H^\ast(C_6, \pi_\ast E_2)\Rightarrow \pi_\ast E_2^{hC_6}$
+        \item (Not for sure known, but some) $H^\ast(C_6,\pi_\ast E_2\wedge V(0))\Rightarrow \pi_\ast(E_2^{hC_2}\wedge V(0))$
+        \item (Plan for REU!) $H^\ast(C_6,\pi_\ast(E_2\wedge Y))\Rightarrow \pi_\ast(E_2^{hC_6}\wedge Y)$
+    \end{enumerate}
+    
+    \item Come up with things that we'd like to discuss in more detail. 
+    \item Type up a couple of lemmas. Type up the computation we did today. The goal of this one is to work with the $\texttt{spectralsequences}$ package and to get more comfortable with the theorems and lemmas we used. The more we have locked into our brains, the easier it will be to do our harder calculations as this REU moves forward! 
+\end{enumerate}
+\subsubsection{Ideas for Lectures for next week}
+\begin{enumerate}
+    \item (Irina) Chromatic Homotopy Theory
+    \item Student lectures: 
+    \begin{itemize}
+        \item Spectral Sequences
+        \item ??
+        \item ??
+    \end{itemize}
+\end{enumerate}
